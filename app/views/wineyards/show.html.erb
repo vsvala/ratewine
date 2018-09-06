@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @wineyard.name %>
+</p>
+
+<p>
+  <strong>Year:</strong>
+  <%= @wineyard.year %>
+</p>
+
+<%= link_to 'Edit', edit_wineyard_path(@wineyard) %> |
+<%= link_to 'Back', wineyards_path %>

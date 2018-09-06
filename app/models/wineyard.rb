@@ -1,0 +1,2 @@
+class Wineyard < ApplicationRecord
+end
