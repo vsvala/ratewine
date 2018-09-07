@@ -15,9 +15,9 @@
   <tbody>
     <% @wines.each do |wine| %>
       <tr>
-        <td><%= wine.name %></td>
+        <td><%= link_to wine.name, wine %></td>
         <td><%= wine.style %></td>
-        <td><%= wine.wineyard_id %></td>
+        <td><%= link_to wine.wineyard.name, wine.wineyard %></td>
         <td><%= link_to 'Show', wine %></td>
         <td><%= link_to 'Edit', edit_wine_path(wine) %></td>
         <td><%= link_to 'Destroy', wine, method: :delete, data: { confirm: 'Are you sure?' } %></td>
@@ -29,3 +29,5 @@
 <br>
 
 <%= link_to 'New Wine', new_wine_path %>
+<br>
+<%= link_to 'List of wineyards',  wineyards_path %>
