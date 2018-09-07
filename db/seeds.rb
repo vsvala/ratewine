@@ -9,7 +9,7 @@
 
 w1 = Wineyard.create name:"Bocopa", year:1897
 w2 = Wineyard .create name:"Badet Clement", year:2001
-w3 = Wineyard.create name:" Casa Santos Lima", year:1040
+w3 = Wineyard.create name:"Casa Santos Lima", year:1040
 
 w1.wines.create name:"Laudum Nature Barrica Monastrell Petit Verdot 2015", style:"Red"
 w2.wines.create name:"Evergreen Touch of Nature Monastrell Organic 2015", style:"Red"
