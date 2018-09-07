@@ -1,6 +1,6 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Wineyards</h1>
+<h2>Wineyards</h2>
 <p> Number of wineyards: <%= @wineyards.count %> </p>
 <table>
   <thead>
@@ -15,7 +15,7 @@
     <% @wineyards.each do |wineyard| %>
       <tr>
         <td><%= link_to wineyard.name, wineyard %></td>
-        <td><%= wineyard.year %></td>
+        <td><i>Established in <%= wineyard.year %></i></td>
         <td><%= link_to 'Edit', edit_wineyard_path(wineyard) %></td>
         <td><%= link_to 'Destroy', wineyard, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
