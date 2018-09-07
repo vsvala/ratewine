@@ -1,14 +1,19 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Name:</strong>
+<h2>
   <%= @wineyard.name %>
-</p>
+</h2>
+<p><i>
+  Established in <%= @wineyard.year %>
+</i></p>
 
-<p>
-  <strong>Year:</strong>
-  <%= @wineyard.year %>
-</p>
+<p> Number of wines: <%= @wineyard.wines.count %> </p>
+
+<ul>
+ <% @wineyard.wines.each do |wine| %>	
+  <li><%= link_to wine.name, wine %></li>
+ <% end %>
+</ul>
 
 <%= link_to 'Edit', edit_wineyard_path(@wineyard) %> |
 <%= link_to 'Back', wineyards_path %>
