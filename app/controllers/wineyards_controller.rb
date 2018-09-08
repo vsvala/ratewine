@@ -5,6 +5,7 @@ class WineyardsController < ApplicationController
   # GET /wineyards.json
   def index
     @wineyards = Wineyard.all
+    render :viinitilat
   end
 
   # GET /wineyards/1
