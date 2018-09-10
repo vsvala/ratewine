@@ -1,0 +1,96 @@
+[9] pry(main)> Wineyard.create name: "BrewDog", year: 2007
+   (0.1ms)  begin transaction
+  Wineyard Create (0.4ms)  INSERT INTO "wineyards" ("name", "year", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["name", "BrewDog"], ["year", 2007], ["created_at", "2018-09-10 21:12:31.735792"], ["updated_at", "2018-09-10 21:12:31.735792"]]
+   (12.1ms)  commit transaction
+=> #<Wineyard:0x000055c9479b04e0
+ id: 5,
+ name: "BrewDog",
+ year: 2007,
+ created_at: Mon, 10 Sep 2018 21:12:31 UTC +00:00,
+ updated_at: Mon, 10 Sep 2018 21:12:31 UTC +00:00>
+[10] pry(main)> brew=Wineyard.find_by name:"BrewDog"
+  Wineyard Load (0.2ms)  SELECT  "wineyards".* FROM "wineyards" WHERE "wineyards"."name" = ? LIMIT ?  [["name", "BrewDog"], ["LIMIT", 1]]
+=> #<Wineyard:0x000055c947ae7bd8
+ id: 5,
+ name: "BrewDog",
+ year: 2007,
+ created_at: Mon, 10 Sep 2018 21:12:31 UTC +00:00,
+ updated_at: Mon, 10 Sep 2018 21:12:31 UTC +00:00>
+[11] pry(main)> w=Wine.new name:"Punk IPA", style:"white"
+=> #<Wine:0x000055c947916a70
+ id: nil,
+ name: "Punk IPA",
+ style: "white",
+ wineyard_id: nil,
+ created_at: nil,
+ updated_at: nil>
+[12] pry(main)> brew.wines<<w
+   (0.1ms)  begin transaction
+  Wine Create (0.6ms)  INSERT INTO "wines" ("name", "style", "wineyard_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)  [["name", "Punk IPA"], ["style", "white"], ["wineyard_id", 5], ["created_at", "2018-09-10 21:17:37.017383"], ["updated_at", "2018-09-10 21:17:37.017383"]]
+   (16.2ms)  commit transaction
+  Wine Load (0.7ms)  SELECT "wines".* FROM "wines" WHERE "wines"."wineyard_id" = ?  [["wineyard_id", 5]]
+=> [#<Wine:0x000055c947916a70
+  id: 12,
+  name: "Punk IPA",
+  style: "white",
+  wineyard_id: 5,
+  created_at: Mon, 10 Sep 2018 21:17:37 UTC +00:00,
+  updated_at: Mon, 10 Sep 2018 21:17:37 UTC +00:00>]
+[13] pry(main)> brew.wines.create name:"Nanny State", style:"lowalcohol"
+   (0.2ms)  begin transaction
+  Wine Create (0.6ms)  INSERT INTO "wines" ("name", "style", "wineyard_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)  [["name", "Nanny State"], ["style", "lowalcohol"], ["wineyard_id", 5], ["created_at", "2018-09-10 21:20:16.382094"], ["updated_at", "2018-09-10 21:20:16.382094"]]
+   (12.5ms)  commit transaction
+=> #<Wine:0x000055c9474e5af0
+ id: 13,
+ name: "Nanny State",
+ style: "lowalcohol",
+ wineyard_id: 5,
+ created_at: Mon, 10 Sep 2018 21:20:16 UTC +00:00,
+ updated_at: Mon, 10 Sep 2018 21:20:16 UTC +00:00>
+[14] pry(main)> w.ratings.create score: 10
+   (0.1ms)  begin transaction
+   (0.0ms)  rollback transaction
+=> #<Rating:0x000055c947342018
+ id: nil,
+ score: 10,
+ wine_id: 12,
+ created_at: nil,
+ updated_at: nil>
+[15] pry(main)> w.ratings.create score: 15
+   (0.1ms)  begin transaction
+   (0.0ms)  rollback transaction
+=> #<Rating:0x000055c94725e750
+ id: nil,
+ score: 15,
+ wine_id: 12,
+ created_at: nil,
+ updated_at: nil>
+[16] pry(main)> w2=Wine.find_by name:"Nanny State" 
+  Wine Load (0.2ms)  SELECT  "wines".* FROM "wines" WHERE "wines"."name" = ? LIMIT ?  [["name", "Nanny State"], ["LIMIT", 1]]
+=> #<Wine:0x000055c947178e58
+ id: 13,
+ name: "Nanny State",
+ style: "lowalcohol",
+ wineyard_id: 5,
+ created_at: Mon, 10 Sep 2018 21:20:16 UTC +00:00,
+ updated_at: Mon, 10 Sep 2018 21:20:16 UTC +00:00>
+[17] pry(main)> w2.ratings.create score: 11
+   (0.1ms)  begin transaction
+   (0.1ms)  rollback transaction
+=> #<Rating:0x000055c946c68b98
+ id: nil,
+ score: 11,
+ wine_id: 13,
+ created_at: nil,
+ updated_at: nil>
+[18] pry(main)> w2.ratings.create score: 16
+   (0.1ms)  begin transaction
+   (0.0ms)  rollback transaction
+=> #<Rating:0x000055c9469c3460
+ id: nil,
+ score: 16,
+ wine_id: 13,
+ created_at: nil,
+ updated_at: nil>
+[19] pry(main)> 
+
