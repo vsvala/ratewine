@@ -1,7 +1,8 @@
 <p id="notice"><%= notice %></p>
 
 <h2>
-  <%= @wine.name %>
+  <strong>Name:</strong>
+ <%= @wine.name %>
 </h2>
 
 <p>
@@ -11,8 +12,17 @@
 
 <p>
   <strong>Wineyard:</strong>
-  <%= @wine.wineyard_id %>
+  <%= @wine.wineyard.name %>
 </p>
+
+<% if @wine.ratings.empty? %>
+ wine has not yet been rated!
+<% else %>
+ <p> <%= @wine %> </p>
+<% end %>
+
+<br>
+
 
 <%= link_to 'Edit', edit_wine_path(@wine) %> |
 <%= link_to 'Back', wines_path %>
