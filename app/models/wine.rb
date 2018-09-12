@@ -4,7 +4,7 @@ class Wine < ActiveRecord::Base
   has_many :ratings
   
   def to_s
-   "Wine has #{ratings.count} #{"rating".pluralize(2)}, average #{average_rating}" 
+   "Wine has #{ratings.count} #{pluralize_help}, average #{average_rating}" 
 
   end
 
@@ -16,7 +16,10 @@ class Wine < ActiveRecord::Base
     ratings.average(:score)
   end
 
+  def pluralize_help
+    if ratings.count !=0
+      ratings.count == 1 ? "rating" : "rating".pluralize
+    end
+  end
 
 end
-
-
