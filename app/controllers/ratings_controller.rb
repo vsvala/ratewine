@@ -1,6 +1,18 @@
 class RatingsController < ApplicationController
   before_action :set_rating, only: [:show]
 
+  def new
+    @rating = Rating.new
+    @wines = Wine.all
+  end
+
+  def create
+    Rating.create params.require(:rating).permit(:score, :wine_id)
+    redirect_to ratings_path
+  end
+
+
+
   # GET /ratings
   # GET /ratings.json
   def index
@@ -18,4 +30,5 @@ class RatingsController < ApplicationController
     def rating_params
       params.require(:rating).permit(:score)
     end
+    
 end
