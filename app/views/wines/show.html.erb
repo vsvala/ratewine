@@ -18,7 +18,7 @@
 <% if @wine.ratings.empty? %>
  wine has not yet been rated!
 <% else %>
- <p> <%= @wine %> </p>
+ <p><%= @wine.average_rating %></p>
 <% end %>
 
 <br>
