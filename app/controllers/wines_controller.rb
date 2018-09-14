@@ -15,6 +15,7 @@ class WinesController < ApplicationController
   # GET /wines/new
   def new
     @wine = Wine.new
+    @wineyards = Wineyard.all
   end
 
   # GET /wines/1/edit
@@ -28,7 +29,7 @@ class WinesController < ApplicationController
 
     respond_to do |format|
       if @wine.save
-        format.html { redirect_to @wine, notice: 'Wine was successfully created.' }
+        format.html { redirect_to wines_path, notice: 'Wine was successfully created.' }
         format.json { render :show, status: :created, location: @wine }
       else
         format.html { render :new }

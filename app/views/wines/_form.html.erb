@@ -22,11 +22,14 @@
   </div>
 
   <div class="field">
-    <%= form.label :wineyard_id %>
-    <%= form.number_field :wineyard_id %>
+  <%= form.select :wineyard_id, options_from_collection_for_select(@wineyards, :id, :name)%> 
   </div>
 
   <div class="actions">
     <%= form.submit %>
   </div>
 <% end %>
+ 
+
+
+
