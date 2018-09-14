@@ -15,5 +15,13 @@
  <% end %>
 </ul>
 
+<% if @wineyard.ratings.empty? %>
+ No ratings yet!
+<% else %>
+ <p><%= @wineyard.average_rating %></p>
+<% end %>
+
+<br>
+
 <%= link_to 'Edit', edit_wineyard_path(@wineyard) %> |
 <%= link_to 'Back', wineyards_path %>
