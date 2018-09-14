@@ -16,10 +16,13 @@ class WinesController < ApplicationController
   def new
     @wine = Wine.new
     @wineyards = Wineyard.all
+    @styles = ["Red", "White", "Rose", "Sparkling","Champagne", "Dessert"]
   end
 
   # GET /wines/1/edit
   def edit
+    @wineyards = Wineyard.all
+    @styles = ["Red", "White", "Rose", "Sparkling","Champagne", "Dessert"]
   end
 
   # POST /wines
