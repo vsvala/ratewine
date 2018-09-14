@@ -1,7 +1,7 @@
 
 class Wine < ActiveRecord::Base 
   belongs_to :wineyard 
-  has_many :ratings
+  has_many :ratings, dependent: :destroy
   
   def to_s
     "#{name}, #{wineyard.name}"  

@@ -11,6 +11,11 @@ class RatingsController < ApplicationController
     redirect_to ratings_path
   end
 
+  def destroy
+    rating = Rating.find(params[:id])
+    rating.delete
+    redirect_to ratings_path
+  end
 
 
   # GET /ratings
@@ -30,5 +35,7 @@ class RatingsController < ApplicationController
     def rating_params
       params.require(:rating).permit(:score)
     end
+
+
     
 end
