@@ -7,7 +7,7 @@ module RatingAverage
         # sum/ratings.count
         # ratings.sum(:score)/ratings.count
         #ratings.average(:score)
-        "Wine has #{ratings.count} #{pluralize_help}, average #{ratings.average(:score)}" 
+        "Has #{ratings.count} #{pluralize_help}, average #{ratings.average(:score)}" 
     
       end 
     
