@@ -1,5 +1,13 @@
+require 'digest/md5'
 class WineyardsController < ApplicationController
+  REALM = "SuperSecret"
+  USERS = {"dhh" => "secret", "admin" => "secret", "pekka" => "beer", "arto" => "foobar", "matti" => "ittam", "vilma" => "kangas", 
+  #plain text password
+           "dap" => Digest::MD5.hexdigest(["dap",REALM,"secret"].join(":"))}  #ha1 digest password
+
+
   before_action :set_wineyard, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate, only: [:destroy]
 
   # GET /wineyards
   # GET /wineyards.json
@@ -71,4 +79,17 @@ class WineyardsController < ApplicationController
     def wineyard_params
       params.require(:wineyard).permit(:name, :year)
     end
-end
+
+    private
+
+    def authenticate
+
+      authenticate_or_request_with_http_digest(REALM) do |username|
+        USERS[username] 
+
+      end
+    end
+  end
+
+
+
