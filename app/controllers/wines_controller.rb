@@ -1,5 +1,7 @@
+# frozen_string_literal: true
+
 class WinesController < ApplicationController
-  before_action :set_wine, only: [:show, :edit, :update, :destroy]
+  before_action :set_wine, only: %i[show edit update destroy]
 
   # GET /wines
   # GET /wines.json
@@ -9,20 +11,19 @@ class WinesController < ApplicationController
 
   # GET /wines/1
   # GET /wines/1.json
-  def show
-  end
+  def show; end
 
   # GET /wines/new
   def new
     @wine = Wine.new
     @wineyards = Wineyard.all
-    @styles = ["Red", "White", "Rose", "Sparkling","Champagne", "Dessert"]
+    @styles = %w[Red White Rose Sparkling Champagne Dessert]
   end
 
   # GET /wines/1/edit
   def edit
     @wineyards = Wineyard.all
-    @styles = ["Red", "White", "Rose", "Sparkling","Champagne", "Dessert"]
+    @styles = %w[Red White Rose Sparkling Champagne Dessert]
   end
 
   # POST /wines
@@ -66,13 +67,14 @@ class WinesController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_wine
-      @wine = Wine.find(params[:id])
-    end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def wine_params
-      params.require(:wine).permit(:name, :style, :wineyard_id)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_wine
+    @wine = Wine.find(params[:id])
+  end
+
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def wine_params
+    params.require(:wine).permit(:name, :style, :wineyard_id)
+  end
 end

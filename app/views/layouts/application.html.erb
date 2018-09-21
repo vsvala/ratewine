@@ -15,6 +15,11 @@
     <%= link_to 'wines', wines_path %>
     <%= link_to 'ratings', ratings_path %>
   </div>
+
+  <% if not session[:user_id].nil? %>
+    <p><%= User.find(session[:user_id]).username %> signed in</p>
+  <% end %>
+
     <%= yield %>
   </body>
 </html>

@@ -1,12 +1,14 @@
+# frozen_string_literal: true
+
+# comment
 require 'digest/md5'
 class WineyardsController < ApplicationController
-  REALM = "SuperSecret"
-  USERS = {"dhh" => "secret", "admin" => "secret", "pekka" => "beer", "arto" => "foobar", "matti" => "ittam", "vilma" => "kangas", 
-  #plain text password
-           "dap" => Digest::MD5.hexdigest(["dap",REALM,"secret"].join(":"))}  #ha1 digest password
+  REALM = 'SuperSecret'
+  USERS = { 'admin' => 'secret', 'pekka' => 'beer', 'arto' => 'foobar', 'matti' => 'ittam', 'vilma' => 'kangas',
+            # plain text password
+            'dap' => Digest::MD5.hexdigest(['dap', REALM, 'secret'].join(':')) }.freeze # ha1 digest password
 
-
-  before_action :set_wineyard, only: [:show, :edit, :update, :destroy]
+  before_action :set_wineyard, only: %i[show edit update destroy]
   before_action :authenticate, only: [:destroy]
 
   # GET /wineyards
@@ -17,8 +19,7 @@ class WineyardsController < ApplicationController
 
   # GET /wineyards/1
   # GET /wineyards/1.json
-  def show
-  end
+  def show; end
 
   # GET /wineyards/new
   def new
@@ -26,8 +27,7 @@ class WineyardsController < ApplicationController
   end
 
   # GET /wineyards/1/edit
-  def edit
-  end
+  def edit; end
 
   # POST /wineyards
   # POST /wineyards.json
@@ -64,32 +64,28 @@ class WineyardsController < ApplicationController
   def destroy
     @wineyard.destroy
     respond_to do |format|
-      format.html { redirect_to wineyards_url, notice: 'Wineyard was successfully destroyed.' }
+      format.html { redirect_to wineyards_url, notice: 'Wineyard destroyed.' }
       format.json { head :no_content }
     end
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_wineyard
-      @wineyard = Wineyard.find(params[:id])
-    end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def wineyard_params
-      params.require(:wineyard).permit(:name, :year)
-    end
-
-    private
-
-    def authenticate
-
-      authenticate_or_request_with_http_digest(REALM) do |username|
-        USERS[username] 
-
-      end
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_wineyard
+    @wineyard = Wineyard.find(params[:id])
   end
 
+  # Never trust parameters fromthescaryinternet, onlyallowthewhitelistthrough
+  def wineyard_params
+    params.require(:wineyard).permit(:name, :year)
+  end
 
+  # private
 
+  def authenticate
+    authenticate_or_request_with_http_digest(REALM) do |username|
+      USERS[username]
+    end
+  end
+end
