@@ -36,6 +36,8 @@ class WinesController < ApplicationController
         format.html { redirect_to wines_path, notice: 'Wine was successfully created.' }
         format.json { render :show, status: :created, location: @wine }
       else
+        @wineyards = Wineyard.all
+        @styles = ["Red", "White", "Rose", "Sparkling", "Champagne", "Dessert"]
         format.html { render :new }
         format.json { render json: @wine.errors, status: :unprocessable_entity }
       end

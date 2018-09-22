@@ -6,6 +6,8 @@ class Wine < ActiveRecord::Base
   belongs_to :wineyard
   has_many :ratings, dependent: :destroy
   
+  validates :name, presence: true
+
   def to_s
     "#{name}, #{wineyard.name}"
     # "Wine has #{ratings.count} #{pluralize_help}, average #{average_rating}"

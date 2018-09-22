@@ -9,11 +9,15 @@ class RatingsController < ApplicationController
   end
 
   def create
-    rating=Rating.new params.require(:rating).permit(:score, :wine_id)
-    rating.user=current_user
-    rating.save
-    #session[:last_rating] = "#{rating.wine.name} #{rating.score} points"
-    redirect_to current_user
+    @rating=Rating.new params.require(:rating).permit(:score, :wine_id)
+    @rating.user=current_user
+    if @rating.save
+      # session[:last_rating] = "#{rating.wine.name} #{rating.score} points"
+      redirect_to user_path current_user
+    else
+      @wines = Wine.all
+      render :new
+    end
   end
 
   def destroy
