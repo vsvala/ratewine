@@ -5,6 +5,7 @@ class Wine < ActiveRecord::Base
   include RatingAverage
   belongs_to :wineyard
   has_many :ratings, dependent: :destroy
+  
   def to_s
     "#{name}, #{wineyard.name}"
     # "Wine has #{ratings.count} #{pluralize_help}, average #{average_rating}"

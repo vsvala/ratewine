@@ -1,9 +1,25 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Username:</strong>
-  <%= @user.username %>
-</p>
+ <h2> <%= @user.username %></h2>
+
+<% if @user.ratings.empty? %>
+ wine has not yet been rated!
+<% else %>
+ <p><%= @user.average_rating %></p>
+<% end %>
+
+
+ <h2>ratings</h2>
+<ul>
+ <% @user.ratings.each do |rating| %>
+   <li> <%= rating %> <%= link_to 'delete', rating, method: :delete , data: { confirm: 'Are you sure?' } %> </li>
+ <% end %>
+</ul>
+
+
 
 <%= link_to 'Edit', edit_user_path(@user) %> |
 <%= link_to 'Back', users_path %>
+
+
+
