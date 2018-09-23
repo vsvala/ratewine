@@ -62,13 +62,13 @@ class WineClubsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_wine_club
-      @wine_club = WineClub.find(params[:id])
-    end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def wine_club_params
-      params.require(:wine_club).permit(:name, :founded, :city)
-    end
+  def set_wine_club
+    @wine_club = WineClub.find(params[:id])
+  end
+
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def wine_club_params
+    params.require(:wine_club).permit(:name, :founded, :city)
+  end
 end
