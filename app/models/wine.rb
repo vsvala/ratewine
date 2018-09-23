@@ -5,7 +5,6 @@ class Wine < ActiveRecord::Base
   include RatingAverage
   belongs_to :wineyard
   has_many :ratings, dependent: :destroy
-  
   validates :name, presence: true
 
   def to_s

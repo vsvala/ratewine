@@ -20,9 +20,11 @@
     <%= link_to 'wines', wines_path %>
     <%= link_to 'ratings', ratings_path %>
     <%= link_to 'users', users_path %>
+    <%= link_to 'clubs', wine_clubs_path %>
     <% if current_user %>
      | <%= link_to u, current_user %>
       <%= link_to 'rate a wine', new_rating_path%>
+      <%= link_to 'join a club', new_membership_path%>
       <%= link_to 'signout', signout_path, method: :delete %>
     <%else %>
      | <%= link_to 'signin', signin_path %> 

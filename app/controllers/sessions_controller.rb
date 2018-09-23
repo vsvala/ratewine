@@ -1,24 +1,25 @@
 class SessionsController < ApplicationController
-    def new
-      # renderöi kirjautumissivun
-    end
-  
-    def create
-      # haetaan usernamea vastaava käyttäjä tietokannasta
-      user = User.find_by username: params[:username]
-      if user.nil?
-        redirect_to signin_path, notice: "User #{params[:username]} does not exist!"
+  def new
+    # renderöi kirjautumissivun
+  end
+
+  def create
+    # haetaan usernamea vastaava käyttäjä tietokannasta
+    user = User.find_by username: params[:username]
+     # tarkastetaan että käyttäjä olemassa, ja että salasana on oikea
+    if user && user.authenticate(params[:password])
+        session[:user_id] = user.id
+        # uudelleen ohjataan käyttäjä omalle sivulleen
+        redirect_to user_path(user), notice: "Welcome back!"
       else
-        # talletetaan sessioon kirjautuneen käyttäjän id (jos käyttäjä on olemassa)
-       session[:user_id] = user.id if user
-      # uudelleen ohjataan käyttäjä omalle sivulleen
-        redirect_to user, notice: "Welcome back!"
-      end
+        redirect_to signin_path, notice: "Username and/or password mismatch"
     end
-    def destroy
-      # nollataan sessio
-      session[:user_id] = nil
-      # uudelleenohjataan sovellus pääsivulle
-      redirect_to :root
-    end
+  end
+
+  def destroy
+    # nollataan sessio
+    session[:user_id] = nil
+    # uudelleenohjataan sovellus pääsivulle
+    redirect_to :root
+  end
 end

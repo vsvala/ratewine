@@ -1,0 +1,21 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <h2><%= @wine_club.name %></h2>
+
+</p>
+
+<p>
+  <strong>Founded:</strong>
+  <%= @wine_club.founded %>
+</p>
+
+<p>
+  <strong>City:</strong>
+  <%= @wine_club.city %>
+</p>
+  <h3>members</h3>
+
+    
+<%= link_to 'Edit', edit_wine_club_path(@wine_club) %> |
+<%= link_to 'Back', wine_clubs_path %>

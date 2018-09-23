@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
+  resources :memberships
+  resources :wine_clubs
   resources :users
   resources :wines
   resources :wineyards
