@@ -10,7 +10,7 @@ class RatingsController < ApplicationController
 
   def create
     @rating = Rating.new params.require(:rating).permit(:score, :wine_id)
-    @rating.use r = current_user
+    @rating.user = current_user
     if @rating.save
       # session[:last_rating] = "#{rating.wine.name} #{rating.score} points"
       redirect_to user_path current_user

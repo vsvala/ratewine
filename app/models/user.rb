@@ -7,8 +7,8 @@ class User < ApplicationRecord
   validate :check_password_format, on: :create  
   validates :password, length: { minimum: 4}, on: :create
 
-  has_many :ratings # käyttäjällä on monta ratingia
-  has_many :memberships, through: :wine_club
+  has_many :ratings, dependent: :destroy # käyttäjällä on monta ratingia
+  has_many :memberships, dependent: :destroy
   has_secure_password
 
   def check_password_format
