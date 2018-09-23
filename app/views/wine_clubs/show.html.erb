@@ -18,12 +18,12 @@
 <%= link_to 'Edit', edit_wine_club_path(@wine_club) %> |
 <%= link_to 'Back', wine_clubs_path %>
 
-  <h2>members</h2>
+  <h2>members (membership_id)</h2>
   <% if @wine_club.membership_ids.empty? %> 
   <%# EI TOIMI......nyt näyttää memerhip id:n pitäisi hake membership.user.name %>
    club has not members yet!
   <% else %>
-    <p><%= @wine_club.membership_ids %></p>
+    <p><%= @wine_club.membership_ids%></p>
   <% end %>
 
 

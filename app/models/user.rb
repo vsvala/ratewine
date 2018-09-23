@@ -8,6 +8,7 @@ class User < ApplicationRecord
 
   has_many :ratings, dependent: :destroy # käyttäjällä on monta ratingia
   has_many :wine_clubs, through: :membership
+  has_many :memberships, dependent: :destroy
   has_secure_password
 
   def check_password_format
