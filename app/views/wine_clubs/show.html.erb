@@ -1,9 +1,6 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <h1><%= @wine_club.name %></h1>
-
-</p>
+<h1><%= @wine_club.name %></h1>
 
 <p>
   <strong>Founded:</strong>
@@ -18,14 +15,12 @@
 <%= link_to 'Edit', edit_wine_club_path(@wine_club) %> |
 <%= link_to 'Back', wine_clubs_path %>
 
-  <h2>members (membership_id)</h2>
-  <% if @wine_club.membership_ids.empty? %> 
-  <%# EI TOIMI......nyt näyttää memerhip id:n pitäisi hake membership.user.name %>
-   club has not members yet!
-  <% else %>
-    <p><%= @wine_club.membership_ids%></p>
+<ul>
+  <h2>Members</h2>
+  <% @wine_club.membership.each do|member| %> 
+  <li><%= link_to member.user, member%></li>
   <% end %>
-
+</ul>
 
 
 

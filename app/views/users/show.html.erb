@@ -9,12 +9,15 @@
 <% end %>
 
 
- <p>member of</p>
- <%# <ul>
- <% @user.wine_clubs.each do |wine_club| %>
-   <%# <li> <%= wine_club %> </li>
- <%# <% end %>
-<%# </ul> %> 
+ <p>
+  <% if @user.wine_clubs.any? %>
+    member of
+ <% @user.wine_clubs.each do |club| %>
+  <li> <%= link_to club.name, club %> </li>
+  <% end %>
+<% end %>
+</p>
+
 
 <% if @user == current_user %>
 <%= link_to 'Edit', edit_user_path(@user) %> |

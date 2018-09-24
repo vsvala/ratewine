@@ -12,8 +12,7 @@
 <% end %>
 
 <div class="field">
-<%= form.label :wine_club_id %>
-<%= form.number_field :wine_club_id %>
+    <%= form.select :wine_club_id, options_from_collection_for_select(@clubs, :id, :name) %>
 </div>
 
 <div class="actions">

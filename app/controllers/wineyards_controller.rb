@@ -27,7 +27,8 @@ class WineyardsController < ApplicationController
   end
 
   # GET /wineyards/1/edit
-  def edit; end
+  def edit; 
+  end
 
   # POST /wineyards
   # POST /wineyards.json

@@ -2,6 +2,7 @@
 
 class WinesController < ApplicationController
   before_action :set_wine, only: %i[show edit update destroy]
+  before_action :set_breweries_and_styles_for_template, only: [:new, :edit, :create]
 
   # GET /wines
   # GET /wines.json
@@ -16,14 +17,10 @@ class WinesController < ApplicationController
   # GET /wines/new
   def new
     @wine = Wine.new
-    @wineyards = Wineyard.all
-    @styles = %w[Red White Rose Sparkling Champagne Dessert]
   end
 
   # GET /wines/1/edit
   def edit
-    @wineyards = Wineyard.all
-    @styles = %w[Red White Rose Sparkling Champagne Dessert]
   end
 
   # POST /wines
@@ -78,5 +75,10 @@ class WinesController < ApplicationController
   # Never trust parameters from the scary internet, only allow the white list through.
   def wine_params
     params.require(:wine).permit(:name, :style, :wineyard_id)
+  end
+
+  def set_wineyards_and_styles_for_template
+    @wineyards = Wineyard.all
+    @styles = %w[Red White Rose Sparkling Champagne Dessert]
   end
 end
