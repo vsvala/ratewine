@@ -26,7 +26,7 @@ describe "Rating" do
     expect(page).to have_content 'Viini2, 20'
     expect(page).to have_content 'Viini2, 30'
     expect(page).to have_content 'Viini1, 5'
-    expect(page).to have_content 'Viini1, 50'
+    expect(page).to have_content 'Viini1, 25'
   end
 
   it "when rating given, is registered to the wine and user who is signed in and show it on his page" do
