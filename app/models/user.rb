@@ -13,4 +13,21 @@ class User < ApplicationRecord
                          with: /[A-Z].*\d|\d.*[A-Z]/,
                          message: "must contain one capital letter and number"
                        }
+  def favorite_wine
+    return nil if ratings.empty? # palautetaan nil jos reittauksia ei ole
+
+    ratings.order(score: :desc).limit(1).first.wine
+  end
+
+  def favorite_wine_style
+    return nil if ratings.empty? # palautetaan nil jos reittauksia ei ole
+
+    ratings.order(score: :desc).limit(1).first.wine.style
+  end
+
+  def favorite_wineyard
+    return nil if ratings.empty? # palautetaan nil jos reittauksia ei ole
+
+    ratings.order(score: :desc).limit(1).first.wine.wineyard.name
+  end
 end

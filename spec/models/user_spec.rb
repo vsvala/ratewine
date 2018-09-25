@@ -31,24 +31,115 @@ RSpec.describe User, type: :model do
   end
 
   describe "with a proper password" do
-    let(:user){ User.create username:"Pekka", password:"Secret1", password_confirmation:"Secret1" }
-    let(:test_wineyard) { Wineyard.new name: "test", year: 2000 }
-    let(:test_wine) { Wine.create name: "testwine", style: "teststyle", wineyard: test_wineyard }
-
+    let(:user){ FactoryBot.create(:user) }
+  
     it "is saved" do
       expect(user).to be_valid
       expect(User.count).to eq(1)
     end
 
     it "with a proper password and two ratings, has the correct average rating" do
-      rating = Rating.new score: 10, wine: test_wine
-      rating2 = Rating.new score: 20, wine: test_wine
-  
-      user.ratings << rating
-      user.ratings << rating2
+      FactoryBot.create(:rating, score: 10, user:user)
+      FactoryBot.create(:rating, score: 20, user: user)
   
       expect(user.ratings.count).to eq(2)
       expect(user.average_rating).to eq('Has 2 ratings, average 15.0')
     end  
   end
+
+  describe "favorite wine" do
+    let(:user){ FactoryBot.create(:user) }
+  
+  
+  it "has method for determining one" do
+    expect(user).to respond_to(:favorite_wine)
+  end
+
+  it "without ratings does not have one" do
+    expect(user.favorite_wine).to eq(nil)
+  end
+
+  it "is the only rated if only one rating" do
+    wine = FactoryBot.create(:wine)
+    rating = FactoryBot.create(:rating, score: 20, wine: wine, user: user)
+    
+    expect(user.favorite_wine).to eq(wine)
+  end
+
+  it "is the one with highest rating if several rated" do
+    create_wine_with_many_ratings({user: user}, 10, 20, 15, 7, 9)
+    best = create_wine_with_rating({ user: user }, 25 )
+
+    expect(user.favorite_wine).to eq(best)
+  end    
+end
+
+end # describe User
+
+
+
+describe "favorite style" do
+  let(:user){ FactoryBot.create(:user) }
+
+
+it "has method for determining one" do
+  expect(user).to respond_to(:favorite_wine_style)
+end
+
+it "without ratings does not have one" do
+  expect(user.favorite_wine_style).to eq(nil)
+end
+
+it "is the only rated if only one rating" do
+  wine = FactoryBot.create(:wine)
+  rating = FactoryBot.create(:rating, score: 20, wine: wine, user: user)
+  
+  expect(user.favorite_wine_style).to eq(wine.style)
+end
+
+it "is the one with highest rating if several rated" do
+  create_wine_with_many_ratings({user: user}, 10, 20, 15, 7, 9)
+  best = create_wine_with_rating({ user: user }, 25 )
+
+  expect(user.favorite_wine_style).to eq(best.style)
+end    
+end # describe User
+
+describe "favorite wineyard" do
+  let(:user){ FactoryBot.create(:user) }
+
+
+it "has method for determining one" do
+  expect(user).to respond_to(:favorite_wineyard)
+end
+
+it "without ratings does not have one" do
+  expect(user.favorite_wineyard).to eq(nil)
+end
+
+it "is the only rated if only one rating" do
+  wine = FactoryBot.create(:wine)
+  rating = FactoryBot.create(:rating, score: 20, wine: wine, user: user)
+  
+  expect(user.favorite_wineyard).to eq(wine.wineyard.name)
+end
+
+it "is the one with highest rating if several rated" do
+  create_wine_with_many_ratings({user: user}, 10, 20, 15, 7, 9)
+  best = create_wine_with_rating({ user: user }, 25 )
+
+  expect(user.favorite_wineyard).to eq(best.wineyard.name)
+end    
+end # describe User
+
+  def create_wine_with_rating(object, score)
+    wine = FactoryBot.create(:wine)
+  FactoryBot.create(:rating, wine: wine, score: score, user: object[:user] )
+  wine
+  end
+
+def create_wine_with_many_ratings(object, *scores)
+  scores.each do |score|
+    create_wine_with_rating(object, score)
+end
 end

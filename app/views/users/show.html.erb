@@ -36,6 +36,11 @@
  <% end %>
 </ul>
 
+  <% if @user.ratings.any? %>
+  <p> Favorite wine:<%= @user.favorite_wine%></p>
+  <p> Favorite wine style:<%= @user.favorite_wine_style %></p>
+  <p> Favorite wineyard:<%= @user.favorite_wineyard %></p>
+  <% end %>
 
 
 
