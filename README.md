@@ -3,5 +3,5 @@
  Helsingin yliopiston Web-palvelinohjelmointi Ruby on Rails(5 op) kurssilla (syksy-2018)  tehty web-sovellus. 
  - Toteutus: Herokun PostgreSQL tietokanta , Ruby on Rails -sovelluskehys.
  - Julkaisu: verkossa Heroku-pilvipalvelussa:https://wepa-ratewine.herokuapp.com/wineyards
- Travis: https://travis-ci.org/vsvala/ratewine.svg?branch=master
+ - Travis: [![Build Status](https://travis-ci.org/vsvala/ratewine.svg?branch=master)](https://travis-ci.org/vsvala/ratewine)
  
