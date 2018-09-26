@@ -19,13 +19,15 @@
         <td><%= wine_club.founded %></td>
         <td><%= wine_club.city %></td>
         <td><%= link_to 'Show', wine_club %></td>
-        <td><%= link_to 'Edit', edit_wine_club_path(wine_club) %></td>
-        <td><%= link_to 'Destroy', wine_club, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% if not current_user.nil? %>
+          <td><%= link_to 'Edit', edit_wine_club_path(wine_club) %></td>
+          <td><%= link_to 'Destroy', wine_club, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% end %>
       </tr>
     <% end %>
   </tbody>
 </table>
 <br>
-<%= link_to 'New Wine Club', new_wine_club_path %>
+<%= link_to('New Wine Club', new_wine_club_path) if current_user %>
 
 

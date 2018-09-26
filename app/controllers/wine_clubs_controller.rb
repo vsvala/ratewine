@@ -1,6 +1,7 @@
 class WineClubsController < ApplicationController
   before_action :set_wine_club, only: [:show, :edit, :update, :destroy]
-
+  before_action :ensure_that_signed_in, except: [:index, :show]
+  
   # GET /wine_clubs
   # GET /wine_clubs.json
   def index

@@ -16,8 +16,10 @@
       <tr>
         <td><%= link_to wineyard.name, wineyard %></td>
         <td><%= wineyard.year %></td>
-        <td><%= link_to 'Edit', edit_wineyard_path(wineyard) %></td>
-        <td><%= link_to 'Destroy', wineyard, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% if not current_user.nil? %>
+          <td><%= link_to 'Edit', edit_wineyard_path(wineyard) %></td>
+          <td><%= link_to 'Destroy', wineyard, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% end %>
       </tr>
     <% end %>
   </tbody>
@@ -25,8 +27,7 @@
 
 
 <br>
-
-<%= link_to 'New Wineyard', new_wineyard_path %>
+<%= link_to('New Wineyard', new_wineyard_path) if current_user %>
 <br>
 
 <%= link_to 'list of wines', wines_path %>
