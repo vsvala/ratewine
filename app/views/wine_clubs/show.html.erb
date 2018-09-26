@@ -11,8 +11,10 @@
   <strong>City:</strong>
   <%= @wine_club.city %>
 </p>
-
-<%= link_to 'Edit', edit_wine_club_path(@wine_club) %> |
+<% if not current_user.nil? %>
+  <%= link_to 'Edit', edit_wine_club_path(@wine_club) %> |
+  <%= link_to 'Destroy', @wine_club, method: :delete, data: { confirm: 'Are you sure?' } %> |
+<% end %>
 <%= link_to 'Back', wine_clubs_path %>
 
 <ul>

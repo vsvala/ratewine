@@ -12,7 +12,7 @@ class WineyardsController < ApplicationController
   before_action :set_wineyard, only: %i[show edit update destroy]
   before_action :ensure_that_signed_in, except: [:index, :show]
   # alla http basic -autentikaatio
-  #before_action :authenticate, only: [:destroy]
+  # before_action :authenticate, only: [:destroy]
 
   # GET /wineyards
   # GET /wineyards.json
@@ -30,7 +30,7 @@ class WineyardsController < ApplicationController
   end
 
   # GET /wineyards/1/edit
-  def edit; 
+  def edit;
   end
 
   # POST /wineyards
