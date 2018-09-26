@@ -5,7 +5,6 @@ describe "Wineyards page" do
     visit wineyards_path
     save_and_open_page
     expect(page).to have_content 'Number of wineyards: 0'
-    expect(page).to have_content  "wineyards wines ratings users clubs | signin\nWineyards\nNumber of wineyards: 0\nName Year\nNew Wineyard list of wines"
   end
 
   describe "when wineyards exists" do
@@ -22,7 +21,7 @@ describe "Wineyards page" do
 
     it "lists the existing wineyards and their total number" do
         expect(page).to have_content "Number of wineyards: #{@wineyards.count}"
-        save_and_open_page
+        # save_and_open_page
         @wineyards.each do |wineyard_name|
         expect(page).to have_content wineyard_name
     end
@@ -31,7 +30,7 @@ describe "Wineyards page" do
   it "allows user to navigate to page of a Winayard" do
     click_link "Viinitila"
 
-    save_and_open_page
+    # save_and_open_page
 
     expect(page).to have_content "Viinitila"
     expect(page).to have_content "Established in 1897"

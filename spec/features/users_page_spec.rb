@@ -22,7 +22,7 @@ describe "User" do
     fill_in('password', with:'wrong')
     click_button('Log in')
 
-    save_and_open_page
+    # save_and_open_page
 
     expect(current_path).to eq(signin_path)
     expect(page).to have_content 'Username and/or password mismatch'
@@ -37,7 +37,7 @@ describe "User" do
     expect{
       click_button('Create User')
     }.to change{User.count}.by(1)
-    save_and_open_page
+    # save_and_open_page
   end
 
 
