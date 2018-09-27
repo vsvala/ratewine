@@ -1,8 +1,14 @@
 language: ruby
-
 rvm:
 - 2.5.1
-
 script:
-- bundle exec rails db:migrate 
+- bundle exec rails db:migrate
 - bundle exec rspec -fd spec
+deploy:
+  provider: heroku
+  api_key:
+    secure: tJXVJoty77CuImms6O5paaArzaQEJb1b/jBEANrRxabG/hAsUsl9bPj5K4eUCZIkplQ8RRBKsk392hY/4e68CbyASKo0W9oluKGRrHAyCFCVllypzsmRzHNV3xVmEb3fd1Vi6aTYsHtEn28mHU5/gAqQfnPrPS2JKexDJLIUG0T5w+BhwrzUF20qpSkB8KSyBTBVAoT79Ovn9QAgdu6lN1zs3HMDvUlvRCGbF/jcytc6ybUMR0cfvnPO/HJG5Qb49s6PnTadOCFPq/jw0XVba8GIqW+T5d/1FbmmzVRY6NxNAXRoOFzfNP3ZafU/NUd0t/xNUVvrByBgWG0yyYZy6DnzPuqA88+Xs4ihmw92iXf4n8GR/5OenA96MhrkdaIUtZbJtUVMZ4enN8j3eyQC4xrSgNxL1cHgorl78JTN/UWgztvUOio3fgzMPH305QRetRuckw1tONPUa+1eOtzjxpsXLSCyNskql6NJt/5X9Mm6dYLRexQt428W54ZAcwC3Cpyy2ZUgQPPgMSkQIclkBSFiF9Q1dE22A8aHl73L9tbF0Rik59pirgcHXoT4MhXmLpWqt0ZtGinUrzwgvYPKsn2ORnObBZaHQWUaqvfe6Z93Uk5L0+hiUVehLv5M/v6dp3X2MREaPJSVNhjvNF54LeZ7G4NgAjsb51yGXuayEhU=
+  app: wepa-ratewine
+  on:
+    repo: vsvala/ratewine
+  run: "rake db:migrate"
