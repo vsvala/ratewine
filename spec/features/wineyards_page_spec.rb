@@ -3,7 +3,7 @@ require 'rails_helper'
 describe "Wineyards page" do
   it "should not have any wineyards listed before been created" do
     visit wineyards_path
-    save_and_open_page
+    # save_and_open_page
     expect(page).to have_content 'Number of wineyards: 0'
   end
 
