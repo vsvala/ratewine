@@ -22,7 +22,16 @@
 <% end %>
 
 <br>
+<% if current_user %>
+  <h4>give a rating:</h4>
 
+  <%= form_for(@rating) do |f| %>
+    <%= f.hidden_field :wine_id %>
+    score: <%= f.number_field :score %>
+    <%= f.submit %>
+  <% end %>
 
 <%= link_to 'Edit', edit_wine_path(@wine) %> |
+<%= link_to 'Destroy', @wine, method: :delete, data: { confirm: 'Are you sure?' } %>
 <%= link_to 'Back', wines_path %>
+<% end %>

@@ -1,5 +1,10 @@
 class PlacesController < ApplicationController
+  
   def index
+  end
+
+  def show
+    @place = BeermappingApi.find_place_with(params[:id])
   end
 
   def search

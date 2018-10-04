@@ -13,7 +13,10 @@ class WinesController < ApplicationController
 
   # GET /wines/1
   # GET /wines/1.json
-  def show; end
+  def show
+    @rating = Rating.new
+    @rating.wine = @wine
+  end
 
   # GET /wines/new
   def new

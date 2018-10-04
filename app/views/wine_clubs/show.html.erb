@@ -24,6 +24,14 @@
   <% end %>
 </ul>
 
+<br>
+<% if current_user %>
+ <%# <% if not @wine_club.is_member?(current_user) %> 
+  <h4>Join the club:</h4>
 
+<%= form_for(@membership) do |f| %>
+ <%= f.hidden_field :wine_club_id %>
+ <%= f.submit value:"join the club" %>
+<% end %>
+  <% end %>
 
-    
