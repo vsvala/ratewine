@@ -1,11 +1,13 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
+  resources :styles
   resources :memberships
   resources :wine_clubs
   resources :users
   resources :wines
   resources :wineyards
+  resources :styles
   resource :session, only: [:new, :create, :destroy]
   root 'wineyards#index'
   get 'kaikki_vinkut', to: 'wines#index'

@@ -38,7 +38,7 @@ class WinesController < ApplicationController
         format.json { render :show, status: :created, location: @wine }
       else
         @wineyards = Wineyard.all
-        @styles = %w[Red White Rose Sparkling Champagne Dessert]
+        @styles = Style.all # %w[Red White Rose Sparkling Champagne Dessert]
         format.html { render :new }
         format.json { render json: @wine.errors, status: :unprocessable_entity }
       end
@@ -78,11 +78,11 @@ class WinesController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def wine_params
-    params.require(:wine).permit(:name, :style, :wineyard_id)
+    params.require(:wine).permit(:name, :wineyard_id, :style_id)
   end
 
   def set_wineyards_and_styles_for_template
     @wineyards = Wineyard.all
-    @styles = %w[Red White Rose Sparkling Champagne Dessert]
+    @styles = Style.all #%w[Red White Rose Sparkling Champagne Dessert]
   end
 end

@@ -13,7 +13,7 @@ class WineClubsController < ApplicationController
   # GET /wine_clubs/1.json
   def show
     #if @wine_club.user = current_user
-     # @membership = Membership.find_by_wine_club_id_and_user_id(@wine_club, current_user)
+    @membership = Membership.find_by_wine_club_id_and_user_id(@wine_club, current_user)
    # else
     @membership = Membership.new
     @membership.wine_club = @wine_club

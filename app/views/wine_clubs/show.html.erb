@@ -33,5 +33,11 @@
  <%= f.hidden_field :wine_club_id %>
  <%= f.submit value:"join the club" %>
 <% end %>
-  <% end %>
+<% end %>
 
+ <%# <% if @wine_club.is_member?(current_user) %> 
+  <%= form_for(@membership, method: "delete") do |f| %>
+  <%= f.hidden_field :wine_club_id %>
+  <%= f.submit value: "end the membership" %>
+<% end %>
+<%#<% end %>
