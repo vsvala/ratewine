@@ -16,8 +16,8 @@
  <% end %>
 
 </ul>
-<% if current_user %>
+<%# <% if current_user %> 
 <%= link_to 'delete', @style, method: :delete , data: { confirm: 'Are you sure?' } %> |
 <%= link_to 'Edit', edit_style_path(@style) %> |
 <%= link_to 'Back', styles_path %>
- <% end %> 
+ <%# <% end %> 

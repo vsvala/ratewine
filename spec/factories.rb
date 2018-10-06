@@ -8,12 +8,17 @@ FactoryBot.define do
     factory :wineyard do
         name { "anonymous" }
         year { 1900 } 
+      end 
+
+      factory :style do
+        name { "Red" }
+        description { 'kuvaus' } 
       end
-    
+
       factory :wine do
-        name { "anonymous" }
-        style { "Red" } 
+        name { "anonymous" } 
         wineyard # viiniin liittyvä tila luodaan wineuard-tehtaalla
+        style
       end
     
       factory :rating do

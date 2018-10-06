@@ -94,14 +94,14 @@ it "is the only rated if only one rating" do
   wine = FactoryBot.create(:wine)
   rating = FactoryBot.create(:rating, score: 20, wine: wine, user: user)
   
-  expect(user.favorite_wine_style).to eq(wine.style)
+  expect(user.favorite_wine_style).to eq(wine.style.name)
 end
 
 it "is the one with highest rating if several rated" do
   create_wine_with_many_ratings({user: user}, 10, 20, 15, 7, 9)
   best = create_wine_with_rating({ user: user }, 25 )
 
-  expect(user.favorite_wine_style).to eq(best.style)
+  expect(user.favorite_wine_style).to eq(best.style.name)
 end    
 end # describe User
 

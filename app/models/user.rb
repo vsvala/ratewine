@@ -22,7 +22,7 @@ class User < ApplicationRecord
   def favorite_wine_style
     return nil if ratings.empty? # palautetaan nil jos reittauksia ei ole
 
-    ratings.order(score: :desc).limit(1).first.wine.style
+    ratings.order(score: :desc).limit(1).first.wine.style.name
   end
 
   def favorite_wineyard

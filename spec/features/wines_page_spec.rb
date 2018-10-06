@@ -2,6 +2,7 @@ require 'rails_helper'
 
 describe "wine" do
 let!(:wineyard) { FactoryBot.create :wineyard, name:"Viinitila" }
+let!(:style) { FactoryBot.create :style, name:"Red" }
 let!(:user2) { FactoryBot.create :user, username:"Pekka", password:"Foobar1", password_confirmation: "Foobar1" }
 
 before :each do
@@ -10,10 +11,10 @@ end
 it "is added if name and style field is valid" do
 
     visit new_wine_path
-    # save_and_open_page
+    save_and_open_page
 
     fill_in('Name', with:'TestiViini')
-    select('Red', from:'wine[style]')
+    select('Red', from:'wine[style_id]')
     select('Viinitila', from:'wine[wineyard_id]')
     
     expect{
@@ -28,7 +29,7 @@ it "is added if name and style field is valid" do
     # save_and_open_page
 
     fill_in('Name', with:'')
-    select('Red', from:'wine[style]')
+    select('Red', from:'wine[style_id]')
     select('Viinitila', from:'wine[wineyard_id]')
     
     expect{

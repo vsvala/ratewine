@@ -3,7 +3,8 @@ require 'rails_helper'
 RSpec.describe Wine, type: :model do
   it "is saved with name, style and wineyard" do
     test_wineyard = Wineyard.create name: "test", year: 2000
-    wine = Wine.create name:"Plan B", style:"Red", wineyard:test_wineyard
+    test_style = Style.create name: "Red", description: 'kuvaus'
+    wine = Wine.create name:"Plan B", wineyard:test_wineyard, style:test_style 
     
     expect(wine.valid?).to be(true)
     expect(Wine.count).to eq(1)
@@ -11,7 +12,8 @@ RSpec.describe Wine, type: :model do
 
   it "is not saved without name" do
     test_wineyard = Wineyard.create name: "test", year: 2000
-    wine = Wine.create style:"Red", wineyard:test_wineyard
+    test_style = Style.create name: "Red", description: 'kuvaus'
+    wine = Wine.create wineyard:test_wineyard, style:test_style 
     
     expect(wine.valid?).to be(false)
     expect(Wine.count).to eq(0)

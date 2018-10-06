@@ -5,9 +5,11 @@ include Helpers
 
 describe "Rating" do
   let!(:wineyard) { FactoryBot.create :wineyard }
+  let!(:style2) { FactoryBot.create :style}
   let!(:wineyard2) { FactoryBot.create :wineyard, name:"TokaViinitila" }
-  let!(:wine1) { FactoryBot.create :wine, name:"Viini1", wineyard:wineyard }
-  let!(:wine2) { FactoryBot.create :wine, name:"Viini2", wineyard:wineyard2 }
+  let!(:style) { FactoryBot.create :style, name:"Red", description:'kuvaus' } 
+  let!(:wine1) { FactoryBot.create :wine, name:"Viini1", wineyard:wineyard, style:style2 }
+  let!(:wine2) { FactoryBot.create :wine, name:"Viini2", wineyard:wineyard2, style:style2 }
   let!(:user) { FactoryBot.create :user }
   let!(:user2) { FactoryBot.create :user, username:"Pasi", password:"Foobar2", password_confirmation: "Foobar2" }
   let!(:rating1) { FactoryBot.create :rating, wine:wine2,  score: 20, user:user}
