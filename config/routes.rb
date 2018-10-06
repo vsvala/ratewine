@@ -7,7 +7,6 @@ Rails.application.routes.draw do
   resources :users
   resources :wines
   resources :wineyards
-  resources :styles
   resource :session, only: [:new, :create, :destroy]
   root 'wineyards#index'
   get 'kaikki_vinkut', to: 'wines#index'

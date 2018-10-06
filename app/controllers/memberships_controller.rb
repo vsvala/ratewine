@@ -15,7 +15,6 @@ class MembershipsController < ApplicationController
   # GET /memberships/new
   def new
     @membership = Membership.new
-    # @wine_club = WineClub.all.select{ |bc| not bc.users.include?(current_user) }
     @clubs = WineClub.all - current_user.wine_clubs
   end
 
@@ -29,7 +28,7 @@ class MembershipsController < ApplicationController
     @membership = Membership.new(membership_params)
     @membership.user = current_user
 
-    @membership = Membership.new wine_club_id:params[:membership][:wine_club_id], user_id: current_user.id
+    # @membership = Membership.new wine_club_id: params[:membership][:wine_club_id], user_id: current_user.id
 
     respond_to do |format|
       if @membership.save
@@ -62,8 +61,7 @@ class MembershipsController < ApplicationController
   def destroy
     @membership.destroy
     respond_to do |format|
-      format.html { redirect_to user_path(current_user), notice: " Membershp in #{@membership.wine_club.name} ended" }
-      # redirect_to @membership.wine_club, notice: "#{current_user.username}, welcome to the club!"
+      format.html { redirect_to current_user, notice: " Membershp in #{@membership.wine_club.name} ended" }
       format.json { head :no_content }
     end
   end
