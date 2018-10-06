@@ -1,7 +1,7 @@
 class BeermappingApi
   def self.places_in(city)
     city = city.downcase
-    Rails.cache.fetch(city, expires_in: 1.week){get_places_in(city) }
+    Rails.cache.fetch(city, expires_in: 1.week){ get_places_in(city) }
   end
 
   def self.get_places_in(city)
@@ -24,7 +24,7 @@ class BeermappingApi
     response = HTTParty.get url
     place = response.parsed_response["bmp_locations"]["location"]
 
-    return Place.new(place)
+    Place.new(place)
   end
 
   def self.key

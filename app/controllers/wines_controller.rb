@@ -83,6 +83,6 @@ class WinesController < ApplicationController
 
   def set_wineyards_and_styles_for_template
     @wineyards = Wineyard.all
-    @styles = Style.all #%w[Red White Rose Sparkling Champagne Dessert]
+    @styles = Style.all
   end
 end

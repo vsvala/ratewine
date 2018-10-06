@@ -15,7 +15,7 @@ class MembershipsController < ApplicationController
   # GET /memberships/new
   def new
     @membership = Membership.new
-    @wine_club = WineClub.all.select{ |bc| not bc.users.include?(current_user) }
+    # @wine_club = WineClub.all.select{ |bc| not bc.users.include?(current_user) }
     @clubs = WineClub.all - current_user.wine_clubs
   end
 
