@@ -14,14 +14,14 @@
       <img src="./assets/0.10.2/loading.gif" alt="loading"/>
     </div>
     <div id="wrapper" style="display:none;">
-      <div class="timestamp">Generated <abbr class="timeago" title="2018-10-06T19:40:20+03:00">2018-10-06T19:40:20+03:00</abbr></div>
+      <div class="timestamp">Generated <abbr class="timeago" title="2018-10-06T20:25:24+03:00">2018-10-06T20:25:24+03:00</abbr></div>
       <ul class="group_tabs"></ul>
 
       <div id="content">
         <div class="file_list_container" id="AllFiles">
   <h2>
     <span class="group_name">All Files</span>
-    (<span class="covered_percent"><span class="red">46.74%</span></span>
+    (<span class="covered_percent"><span class="red">46.98%</span></span>
      covered at
      <span class="covered_strength">
        <span class="green">
@@ -33,8 +33,8 @@
   <div>
     <b>34</b> files in total.
     <b>430</b> relevant lines. 
-    <span class="green"><b>201</b> lines covered</span> and
-    <span class="red"><b>229</b> lines missed </span>
+    <span class="green"><b>202</b> lines covered</span> and
+    <span class="red"><b>228</b> lines missed </span>
   </div>
   <table class="file_list">
     <thead>
@@ -382,12 +382,12 @@
       
       <tr>
         <td class="strong"><a href="#8ac0658dcb4272c6f1651a647a4a961985146df1" class="src_link" title="lib/weathermapping_api.rb">lib/weathermapping_api.rb</a></td>
-        <td class="red strong">45.45 %</td>
+        <td class="red strong">54.55 %</td>
         <td>19</td>
         <td>11</td>
-        <td>5</td>
         <td>6</td>
-        <td>0.8</td>
+        <td>5</td>
+        <td>1.1</td>
       </tr>
       
     </tbody>
@@ -884,11 +884,11 @@
           <div class="file_list_container" id="Libraries">
   <h2>
     <span class="group_name">Libraries</span>
-    (<span class="covered_percent"><span class="red">33.33%</span></span>
+    (<span class="covered_percent"><span class="red">36.67%</span></span>
      covered at
      <span class="covered_strength">
        <span class="red">
-         0.48
+         0.59
        </span>
     </span> hits/line)
   </h2>
@@ -896,8 +896,8 @@
   <div>
     <b>2</b> files in total.
     <b>30</b> relevant lines. 
-    <span class="green"><b>10</b> lines covered</span> and
-    <span class="red"><b>20</b> lines missed </span>
+    <span class="green"><b>11</b> lines covered</span> and
+    <span class="red"><b>19</b> lines missed </span>
   </div>
   <table class="file_list">
     <thead>
@@ -925,12 +925,12 @@
       
       <tr>
         <td class="strong"><a href="#8ac0658dcb4272c6f1651a647a4a961985146df1" class="src_link" title="lib/weathermapping_api.rb">lib/weathermapping_api.rb</a></td>
-        <td class="red strong">45.45 %</td>
+        <td class="red strong">54.55 %</td>
         <td>19</td>
         <td>11</td>
-        <td>5</td>
         <td>6</td>
-        <td>0.8</td>
+        <td>5</td>
+        <td>1.1</td>
       </tr>
       
     </tbody>
@@ -6591,11 +6591,11 @@
         <div class="source_table" id="8ac0658dcb4272c6f1651a647a4a961985146df1">
   <div class="header">
     <h3>lib/weathermapping_api.rb</h3>
-    <h4><span class="red">45.45 %</span> covered</h4>
+    <h4><span class="red">54.55 %</span> covered</h4>
     <div>
       <b>11</b> relevant lines. 
-      <span class="green"><b>5</b> lines covered</span> and
-      <span class="red"><b>6</b> lines missed.</span>
+      <span class="green"><b>6</b> lines covered</span> and
+      <span class="red"><b>5</b> lines missed.</span>
     </div>
   </div>
   
@@ -6617,7 +6617,7 @@
         <li class="covered" data-hits="3" data-linenumber="3">
           <span class="hits">3</span>
           
-          <code class="ruby">    url = &quot;http://api.apixu.com/v1/current.xml?key=6ba400cf4fce47dba82104613180610&amp;q=#{city}&quot;</code>
+          <code class="ruby">    url = &quot;http://api.apixu.com/v1/current.xml?key=#{key}&amp;q=#{city}&quot;</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="4">
@@ -6629,7 +6629,7 @@
         <li class="covered" data-hits="3" data-linenumber="5">
           <span class="hits">3</span>
           
-          <code class="ruby">    response = HTTParty.get &quot;#{url}&quot;</code>
+          <code class="ruby">    response = HTTParty.get(url)</code>
         </li>
       
         <li class="missed" data-hits="0" data-linenumber="6">
@@ -6698,8 +6698,8 @@
           <code class="ruby">  def self.key</code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="17">
-          
+        <li class="covered" data-hits="3" data-linenumber="17">
+          <span class="hits">3</span>
           
           <code class="ruby">    &quot;6ba400cf4fce47dba82104613180610&quot;</code>
         </li>
