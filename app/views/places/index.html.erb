@@ -6,6 +6,7 @@
   <%= submit_tag "Search" %>
 <% end %>
 
+<h3>places to get your wine</h3>
 <% if @places %>
   <table>
     <thead>
@@ -26,3 +27,23 @@
     <% end %>
   </table>
 <% end %>
+
+<h3>the current wine weather in Helsinki</h3>
+
+<% if @weathers%>
+    <table>
+    <thead>
+      <% Weather.rendered_fields.each do |field| %>
+        <th><%= field %></th>
+      <% end %>
+    </thead>
+    <% @weathers.each do |weather| %>
+      <tr>
+        <% Weather.rendered_fields.each do |field| %>
+          <td><%= weather.send(field) %></td>
+        <% end %>
+      </tr>
+    <% end %>
+  </table>
+<% end %>
+
