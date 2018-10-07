@@ -43,20 +43,18 @@
           <li class="nav-item">
             <%= link_to 'places', places_path, { class: "nav-link" } %>
           </li>   
-          | 
+      
           <% if current_user %>
-            <li class="nav-item">
-              <%= link_to u, current_user, { class: "nav-link" }%>
-            </li>  
-            <li class="nav-item">
-              <%= link_to 'rate a wine', new_rating_path, { class: "nav-link" }%>
-            </li>  
-            <li class="nav-item">
-              <%= link_to 'join a club', new_membership_path, { class: "nav-link" }%>
-             </li> 
-            <li class="nav-item">
-              <%= link_to 'signout', signout_path, { method: :delete, class: "nav-link" }%>
-            </li> 
+            <li class="nav-item dropdown">
+             <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"><%=u%></a>
+              <div class="dropdown-menu">
+                <%= link_to 'my page', current_user, { class: "dropdown-item" }%>
+                <%= link_to 'rate a wine', new_rating_path, { class: "dropdown-item" }%>
+                <%= link_to 'join a club', new_membership_path, { class: "dropdown-item" }%>
+              <div class="dropdown-divider"></div>
+                <%= link_to 'signout', signout_path, { method: :delete, class:  "dropdown-item" }%>
+              </div>
+            </li>   
           <%else %>
             <li class="nav-item">
              <%= link_to 'signin', signin_path, { class: "nav-link" } %> 
@@ -65,13 +63,14 @@
         </ul>
       </div>
     </nav>
+    
 <div class="container">
   <% if notice %>
     <div class="alert alert-primary" role="alert">
       <%= notice %>
     </div>
   <% end %>
-  
+
   <div class="row">
     <div class="col-sm-8">
       <%= yield %>
