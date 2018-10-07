@@ -1,5 +1,3 @@
-<p id="notice"><%= notice %></p>
-
 <h1><%= @wine_club.name %></h1>
 
 <p>
@@ -20,24 +18,25 @@
 <ul>
   <h2>Members</h2>
   <% @wine_club.membership.each do|member| %> 
-  <li><%= link_to member.user.username, member.user%></li>
+  <li><%= link_to member.user.username, member%></li>
   <% end %>
 </ul>
 
 <br>
 <% if current_user %>
  <% if Membership.where(:user => current_user, :wine_club => @wine_club).count == 0 %>
+ 
   <h4>Join the club:</h4>
 
 <%= form_for(@membership) do |f| %>
  <%= f.hidden_field :wine_club_id %>
- <%= f.submit value:"join the club" %>
+ <%= f.submit value:"join the club", class:'btn btn-primary'%>
 <% end %>
 <% else %>
  <h4>Delete membership:</h4>
   <%= form_for(@membership, method: "delete") do |f| %>
   <%= f.hidden_field :wine_club_id %>
-  <%= f.submit value: "end the membership", data: { confirm: 'Are you sure?'}  %>
+  <%= f.submit value: "end the membership", class:'btn btn-danger', data: { confirm: 'Are you sure?'}  %>
 <% end %>
 <% end %>
 <% end %>

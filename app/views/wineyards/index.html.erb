@@ -1,8 +1,6 @@
-<p id="notice"><%= notice %></p>
-
 <h1>Wineyards</h1>
 <p> Number of wineyards: <%= @wineyards.count %> </p>
-<table>
+<table class="table table-hover">
   <thead>
     <tr>
       <th>Name</th>
@@ -16,7 +14,7 @@
       <tr>
         <td><%= link_to wineyard.name, wineyard %></td>
         <td><%= wineyard.year %></td>
-        <% if not current_user.nil? %>
+        <% if current_user %>
           <td><%= link_to 'Edit', edit_wineyard_path(wineyard) %></td>
           <td><%= link_to 'Destroy', wineyard, method: :delete, data: { confirm: 'Are you sure?' } %></td>
         <% end %>
@@ -27,7 +25,7 @@
 
 
 <br>
-<%= link_to('New Wineyard', new_wineyard_path) if current_user %>
+<%= link_to('New Wineyard', new_wineyard_path, class:'btn btn-primary') if current_user %>
 <br>
 
 <%= link_to 'list of wines', wines_path %>

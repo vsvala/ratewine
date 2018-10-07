@@ -2,7 +2,6 @@
   <% if wine_club.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(wine_club.errors.count, "error") %> prohibited this wine_club from being saved:</h2>
-
       <ul>
       <% wine_club.errors.full_messages.each do |message| %>
         <li><%= message %></li>
@@ -11,22 +10,32 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :name %>
-    <%= form.text_field :name %>
+     <div class="field">
+    <div class="form-group row">  
+    <label for="name" class="col-2 col-form-label"><%= form.label :name %></label>
+    <div class="col-sm-10">
+    <input type="text" class="form-control" id= <%= form.text_field :name %>   
+  </div>
   </div>
 
-  <div class="field">
-    <%= form.label :founded %>
-    <%= form.number_field :founded %>
+    <div class="field">
+    <div class="form-group row">
+    <label for="founded" class="col-2 col-form-label"><%= form.label :founded %></label>
+     <div class="col-sm-10">
+    <input type="number" class="form-control" id= <%= form.number_field :founded %>
+  </div>
   </div>
 
-  <div class="field">
-    <%= form.label :city %>
-    <%= form.text_field :city %>
+    <div class="field">
+    <div class="form-group row">
+    <label for="city"class="col-2 col-form-label"><%= form.label :city %></label>
+     <div class="col-sm-10">
+    <input type="text" class="form-control" id= <%= form.text_field :city  %>
+  </div>
   </div>
 
+  
   <div class="actions">
-    <%= form.submit %>
+    <%= form.submit class:'btn btn-primary' %>
   </div>
 <% end %>
