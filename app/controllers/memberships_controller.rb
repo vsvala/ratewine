@@ -28,8 +28,6 @@ class MembershipsController < ApplicationController
     @membership = Membership.new(membership_params)
     @membership.user = current_user
 
-    # @membership = Membership.new wine_club_id: params[:membership][:wine_club_id], user_id: current_user.id
-
     respond_to do |format|
       if @membership.save
         format.html { redirect_to @membership.wine_club, notice: "#{current_user.username}, welcome to the club!" }
@@ -61,7 +59,7 @@ class MembershipsController < ApplicationController
   def destroy
     @membership.destroy
     respond_to do |format|
-      format.html { redirect_to current_user, notice: " Membershp in #{@membership.wine_club.name} ended" }
+      format.html { redirect_to @membership.user, notice: " Membershp in #{@membership.wine_club.name} ended" } #current_user
       format.json { head :no_content }
     end
   end
