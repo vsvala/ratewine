@@ -234,8 +234,9 @@
         1,
         0,
         null,
+        null,
         0,
-        0,
+        null,
         0,
         null,
         0,
@@ -311,7 +312,7 @@
         3,
         1,
         null,
-        2,
+        null,
         2,
         2,
         2,
@@ -620,7 +621,6 @@
       "/home/local/svsv/RubyOnRails/ratewine/app/controllers/wineyards_controller.rb": [
         null,
         null,
-        null,
         1,
         1,
         null,
@@ -894,9 +894,9 @@
       ],
       "/home/local/svsv/RubyOnRails/ratewine/app/models/weather.rb": [
         0,
-        null,
-        null,
-        null,
+        0,
+        0,
+        0,
         0
       ],
       "/home/local/svsv/RubyOnRails/ratewine/app/jobs/application_job.rb": [
@@ -922,6 +922,6 @@
         0
       ]
     },
-    "timestamp": 1538901275
+    "timestamp": 1538934903
   }
 }

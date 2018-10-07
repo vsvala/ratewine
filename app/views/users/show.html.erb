@@ -1,15 +1,21 @@
 <h1> <%= @user.username %></h1>
 
+<div class="card">
+  <div class="card-body">
 <% if @user.ratings.empty? %>
  wine has not yet been rated!
 <% else %>
- <p><%= @user.average_rating %></p>
-<% end %>
-
+  <p><%= @user.average_rating %></p>
+  <p> Favorite wine:<%= @user.favorite_wine%></p>
+  <p> Favorite wine style:<%= @user.favorite_wine_style %></p>
+  <p> Favorite wineyard:<%= @user.favorite_wineyard %></p>
+  <% end %>
+</div>
+</div>
 
  <p>
   <% if @user.wine_clubs.any? %>
-    member of
+    <h3> member of wine clubs</h3>
  <% @user.wine_clubs.each do |club| %>
   <li> <%= link_to club.name, club %> </li>
   <% end %>
@@ -34,11 +40,6 @@
  <% end %>
 </ul>
 
-  <% if @user.ratings.any? %>
-  <p> Favorite wine:<%= @user.favorite_wine%></p>
-  <p> Favorite wine style:<%= @user.favorite_wine_style %></p>
-  <p> Favorite wineyard:<%= @user.favorite_wineyard %></p>
-  <% end %>
 
 
 

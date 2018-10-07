@@ -1,5 +1,5 @@
+
 <h2>
-  <strong>Name:</strong>
  <%= @wine.name %>
 </h2>
 
@@ -20,6 +20,8 @@
 <% end %>
 
 <br>
+<div class="card">
+<div class="card-body">
 <% if current_user %>
   <h4>give a rating:</h4>
 
@@ -28,8 +30,13 @@
     score: <%= f.number_field :score %>
     <%= f.submit class:"btn btn-primary"%>
   <% end %>
+</div>
+</div>
+<br>
+<br>
 
-<%= link_to 'Edit', edit_wine_path(@wine) %> |
+<%= link_to 'Edit', edit_wine_path(@wine),class:'btn btn-primary' %> 
 <%= link_to 'Destroy', @wine, class:'btn btn-danger', method: :delete, data: { confirm: 'Are you sure?' } %>
-<%= link_to 'Back', wines_path %>
+<%= link_to 'Back', wines_path, class:'btn btn-primary' %>
 <% end %>
+<br>
