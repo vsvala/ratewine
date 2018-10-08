@@ -19,7 +19,7 @@
 <% if @wineyard.ratings.empty? %>
  No ratings yet!
 <% else %>
-<p>Has <%= pluralize(@wineyard.ratings.count, 'rating') %>, average <%= @wineyard.average_rating %></p>
+<p>Has <%= pluralize(@wineyard.ratings.count, 'rating') %>, average <%=round(@wineyard.average_rating) %></p>
  <%# <p><%= @wineyard.average_rating %>
 <% end %>
 <br>

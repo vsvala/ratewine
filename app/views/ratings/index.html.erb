@@ -25,7 +25,7 @@
   <% @top_wines.each do |wine| %>
       <tr>
         <td><%= link_to wine.name, wine %></td>
-           <td><%= wine.average_rating %></td>
+           <td><%= round(wine.average_rating) %></td>
         <td></td>
       </tr>
   <% end %>
@@ -46,7 +46,7 @@
   <% @top_wineyards.each do |wineyard| %>
       <tr>
         <td><%= link_to wineyard.name, wineyard %></td>
-           <td><%= wineyard.average_rating %></td>
+           <td><%= round(wineyard.average_rating) %></td>
         <td></td>
       </tr>
   <% end %>
@@ -66,7 +66,7 @@
   <% @top_wines.each do |wine| %>
       <tr>
         <td><%= link_to wine.style.name, wine.style %></td>
-           <td><%= wine.average_rating %></td>
+           <td><%= round(wine.average_rating) %></td>
         <td></td>
       </tr>
   <% end %>

@@ -16,7 +16,7 @@
 <% if @wine.ratings.empty? %>
  wine has not yet been rated!
 <% else %>
-<p>Has <%= pluralize(@wine.ratings.count, 'rating') %>, average <%= @wine.average_rating %></p>
+<p>Has <%= pluralize(@wine.ratings.count, 'rating') %>, average <%= round(@wine.average_rating) %></p>
  <%# <p><%= @wine.average_rating %>
 <% end %>
 
@@ -36,8 +36,7 @@
 <br>
 <br>
 
-<%= link_to 'Edit', edit_wine_path(@wine),class:'btn btn-primary' %> 
-<%= link_to 'Destroy', @wine, class:'btn btn-danger', method: :delete, data: { confirm: 'Are you sure?' } %>
+<%= edit_and_destroy_buttons(@wine) %>
 <%= link_to 'Back', wines_path, class:'btn btn-primary' %>
 <% end %>
 <br>
