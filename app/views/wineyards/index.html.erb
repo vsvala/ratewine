@@ -1,33 +1,17 @@
 <h1>Wineyards</h1>
-<p> Number of wineyards: <%= @wineyards.count %> </p>
-<table class="table table-hover">
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Year</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+<h2>Active</h2>
+<p> Number of active wineyards: <%= @active_wineyards.count %> </p>
 
-  <tbody>
-    <% @wineyards.each do |wineyard| %>
-      <tr>
-        <td><%= link_to wineyard.name, wineyard %></td>
-        <td><%= wineyard.year %></td>
-        <% if current_user %>
-          <td><%= link_to 'Edit', edit_wineyard_path(wineyard) %></td>
-          <td><%= link_to 'Destroy', wineyard, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-        <% end %>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+<%= render 'list', wineyards: @active_wineyards %>
 
+<h2>Retired</h2>
+<p> Number of retired wineyards: <%= @retired_wineyards.count %> </p>
+
+<%= render 'list', wineyards: @retired_wineyards %>
+ 
 
 <br>
 <%= link_to('New Wineyard', new_wineyard_path, class:'btn btn-primary') if current_user %>
 <br>
-
-<%= link_to 'list of wines', wines_path %>
 
 

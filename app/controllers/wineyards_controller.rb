@@ -1,22 +1,17 @@
 # frozen_string_literal: true
 # comment
+
 require 'digest/md5'
 class WineyardsController < ApplicationController
-  # http -basic autentikaatiota
-  # REALM = 'SuperSecret'
-  # USERS = { 'admin' => 'secret', 'pekka' => 'beer', 'arto' => 'foobar', 'matti' => 'ittam', 'vilma' => 'kangas',
-  #           # plain text password
-  #           'dap' => Digest::MD5.hexdigest(['dap', REALM, 'secret'].join(':')) }.freeze # ha1 digest password
-
   before_action :set_wineyard, only: %i[show edit update destroy]
   before_action :ensure_that_signed_in, except: [:index, :show]
-  # alla http basic -autentikaatio
-  # before_action :authenticate, only: [:destroy]
 
   # GET /wineyards
   # GET /wineyards.json
   def index
-    @wineyards = Wineyard.all
+    @active_wineyards = Wineyard.active
+    @retired_wineyards = Wineyard.retired
+    # @wineyards = Wineyard.all
   end
 
   # GET /wineyards/1
@@ -81,15 +76,7 @@ class WineyardsController < ApplicationController
 
   # Never trust parameters fromthescaryinternet, onlyallowthewhitelistthrough
   def wineyard_params
-    params.require(:wineyard).permit(:name, :year)
+    params.require(:wineyard).permit(:name, :year, :active)
   end
-
-  # private
-
-  # http basic autentikaatioon kuuluvaa
-  # def authenticate
-  #   authenticate_or_request_with_http_digest(REALM) do |username|
-  #     USERS[username]
-  #   end
-  # end
+  
 end

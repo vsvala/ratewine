@@ -16,7 +16,8 @@
 <% if @wine.ratings.empty? %>
  wine has not yet been rated!
 <% else %>
- <p><%= @wine.average_rating %></p>
+<p>Has <%= pluralize(@wine.ratings.count, 'rating') %>, average <%= @wine.average_rating %></p>
+ <%# <p><%= @wine.average_rating %>
 <% end %>
 
 <br>
