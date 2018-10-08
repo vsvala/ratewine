@@ -24,8 +24,11 @@
 <% end %>
 <br>
 <% if current_user %>
+<%= link_to "change activity", toggle_activity_wineyard_path(@wineyard.id), method: :post, class: "btn btn-primary" %>
 <%= link_to 'Edit', edit_wineyard_path(@wineyard), class:"btn btn-primary"%> 
-  <%= link_to 'Destroy', @wineyrd, method: :delete, data: { confirm: 'Are you sure?' }, class:"btn btn-danger"  %>
+<% if current_user.admin %>
+<%= link_to 'Destroy', @wineyrd, method: :delete, data: { confirm: 'Are you sure?' }, class:"btn btn-danger"  %>
+<% end %>
 <% end %>
 <%= link_to 'Back', wineyards_path %>
  

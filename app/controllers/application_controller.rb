@@ -15,6 +15,6 @@ class ApplicationController < ActionController::Base
   end
 
   def ensure_that_user_is_admin
-    redirect_to :back, notice: 'only admins can do that' unless current_user.admin
+    redirect_to wines_path, notice: 'only admins can do that' unless current_user.admin
   end
 end

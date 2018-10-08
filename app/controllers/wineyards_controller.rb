@@ -5,6 +5,7 @@ require 'digest/md5'
 class WineyardsController < ApplicationController
   before_action :set_wineyard, only: %i[show edit update destroy]
   before_action :ensure_that_signed_in, except: [:index, :show]
+  before_action :ensure_that_user_is_admin, only: [:destroy]
 
   # GET /wineyards
   # GET /wineyards.json
@@ -78,5 +79,13 @@ class WineyardsController < ApplicationController
   def wineyard_params
     params.require(:wineyard).permit(:name, :year, :active)
   end
-  
+
+  def toggle_activity
+    wineyard = Wineyard.find(params[:id])
+    wineyard.update_attribute :active, (not wineyard.active)
+
+    new_status = wineyard.active? ? "active" : "retired"
+
+    redirect_to wineyard, notice: "wineyard activity status changed to #{new_status}"
+  end
 end

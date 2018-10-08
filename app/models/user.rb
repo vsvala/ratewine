@@ -13,6 +13,9 @@ class User < ApplicationRecord
                          with: /[A-Z].*\d|\d.*[A-Z]/,
                          message: "must contain one capital letter and number"
                        }
+
+  scope :admin, -> { where admin: true }
+
   def favorite_wine
     return nil if ratings.empty? # palautetaan nil jos reittauksia ei ole
 

@@ -11,12 +11,14 @@
 </p>
 <% if not current_user.nil? %>
    <p>
-  <%= link_to 'Edit', edit_wine_club_path(@wine_club) %> |
+  <%= link_to 'Edit', edit_wine_club_path(@wine_club) %> 
+   <% if current_user.admin %>|
   <%= link_to 'Destroy', @wine_club, method: :delete, data: { confirm: 'Are you sure?' } %> |
+<% end %>
 <% end %>
 <%= link_to 'Back', wine_clubs_path %>
  </p>
- 
+
 <h2>Members</h2>
 <ul>
   <% @wine_club.membership.each do|member| %> 
