@@ -12,6 +12,6 @@ class Rating < ActiveRecord::Base
     "#{wine.name}, #{score}"
   end
 
-  scope :recent, -> { order('created_at DESC').limit(5)}
+  scope :recent, -> { order('created_at DESC').limit(5) }
   scope :active, -> { where "score>0" }
 end

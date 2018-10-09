@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 # comment
 
 require 'digest/md5'
@@ -70,7 +71,7 @@ class WineyardsController < ApplicationController
 
   def toggle_activity
     wineyard = Wineyard.find(params[:id])
-    wineyard.update_attribute :active, (not wineyard.active)
+    wineyard.update_attribute :active, !wineyard.active
 
     new_status = wineyard.active? ? "active" : "retired"
 

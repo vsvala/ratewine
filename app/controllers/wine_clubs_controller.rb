@@ -12,16 +12,23 @@ class WineClubsController < ApplicationController
   # GET /wine_clubs/1
   # GET /wine_clubs/1.json
   def show
-    # @membership = if @wine_club.members.include? current_user @wine_club.memberships.where(user: current_user).first
+    # @membership = if @wine_club.members.include? current_user
+    #               @wine_club.memberships.where(user: current_user).first
+    #               else
+    #                 Membership.new wine_club: @wine_club
+    #               end
+
+    # @membership = if @wine_club.members.include? current_user
+    @wine_club.memberships.where(user: current_user).first
     #               else
     #               Membership.new wine_club: @wine_club
     #               end
     @membership = Membership.where(user: current_user, wine_club: @wine_club).first
 
-    if @membership.nil?
-      @membership = Membership.new
-      @membership.wine_club = @wine_club
-    end
+    # if @membership.nil?
+    @membership = Membership.new(@wine_club) if !@membership
+    # @membership.wine_club = @wine_club
+    # end
   end
 
   # GET /wine_clubs/new

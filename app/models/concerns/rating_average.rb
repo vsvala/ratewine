@@ -12,8 +12,8 @@ module RatingAverage
     # return 0 if ratings.empty?
     # ratings.map { |r| r.score }.sum / ratings.count.to_f
     # ratings.average(:score)
-    "#{ratings.average(:score)}"
-    #"Has #{ratings.count} #{pluralize_help}, average #{ratings.average(:score)}"
+    ratings.average(:score).to_s
+    # "Has #{ratings.count} #{pluralize_help}, average #{ratings.average(:score)}"
   end
 
   def pluralize_help

@@ -15,17 +15,17 @@ class Wine < ActiveRecord::Base
     # "Wine has #{ratings.count} #{pluralize_help}, average #{average_rating}"
   end
 
-  def self.top(n)
+  def self.top(num)
     sorted_by_rating_in_desc_order = Wine.all.sort_by{ |b| -(b.average_rating || 0) }
     # sorted_by_rating_in_desc_order.last(n)
-    s=sorted_by_rating_in_desc_order.reverse
-    s.take(n)
+    s = sorted_by_rating_in_desc_order.reverse
+    s.take(num)
   end
 
-  def self.top_style(n)
+  def self.top_style(num)
     sorted_by_rating_in_desc_order = Wine.all.sort_by{ |b| -(b.average_rating || 0) }
     # sorted_by_rating_in_desc_order.last(n)
-    s=sorted_by_rating_in_desc_order.reverse
-    s.take(n)
+    s = sorted_by_rating_in_desc_order.reverse
+    s.take(num)
   end
 end
