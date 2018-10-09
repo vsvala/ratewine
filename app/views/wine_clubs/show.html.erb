@@ -30,12 +30,12 @@
 <% if current_user %>
  <% if Membership.where(:user => current_user, :wine_club => @wine_club).count == 0 %>
  
-  <h4>Join the club:</h4>
-
+<h4>Join the club:</h4>
 <%= form_for(@membership) do |f| %>
  <%= f.hidden_field :wine_club_id %>
  <%= f.submit value:"join the club", class:'btn btn-primary'%>
 <% end %>
+
 <% else %>
  <h4>Delete membership:</h4>
   <%= form_for(@membership, method: "delete") do |f| %>
