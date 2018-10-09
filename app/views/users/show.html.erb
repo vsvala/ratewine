@@ -1,4 +1,15 @@
-<h1> <%= @user.username %></h1>
+<h1> <%= @user.username %>
+  <% if @user.close %>
+    <span class="badge badge-info">account closed</span>
+ <% end %> 
+</h1> 
+<% if current_user.admin %>
+ <% new_status = @user.close? ? "open" : "close" %>
+  <%= link_to new_status, toggle_useractivity_user_path(@user.id), method: :post, class: "btn btn-danger" %>
+<% end %>
+
+<br>
+<br>
 
 <div class="card">
   <div class="card-body">

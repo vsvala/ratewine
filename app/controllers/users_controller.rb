@@ -64,6 +64,16 @@ class UsersController < ApplicationController
     end
   end
 
+  def toggle_useractivity
+    user = User.find(params[:id])
+
+    new_userstatus = user.close? ? false : true
+    user.update_attribute :close, new_userstatus
+    new_status = user.close? ? "close" : "open"
+
+    redirect_to user, notice: "user account changed to #{new_status}"
+  end
+
   private
 
   # Use callbacks to share common setup or constraints between actions.
@@ -73,6 +83,6 @@ class UsersController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def user_params
-    params.require(:user).permit(:username, :password, :password_confirmation)
+    params.require(:user).permit(:username, :password, :password_confirmation, :active)
   end
 end

@@ -68,6 +68,15 @@ class WineyardsController < ApplicationController
     end
   end
 
+  def toggle_activity
+    wineyard = Wineyard.find(params[:id])
+    wineyard.update_attribute :active, (not wineyard.active)
+
+    new_status = wineyard.active? ? "active" : "retired"
+
+    redirect_to wineyard, notice: "wineyard activity status changed to #{new_status}"
+  end
+
   private
 
   # Use callbacks to share common setup or constraints between actions.
@@ -78,14 +87,5 @@ class WineyardsController < ApplicationController
   # Never trust parameters fromthescaryinternet, onlyallowthewhitelistthrough
   def wineyard_params
     params.require(:wineyard).permit(:name, :year, :active)
-  end
-
-  def toggle_activity
-    wineyard = Wineyard.find(params[:id])
-    wineyard.update_attribute :active, (not wineyard.active)
-
-    new_status = wineyard.active? ? "active" : "retired"
-
-    redirect_to wineyard, notice: "wineyard activity status changed to #{new_status}"
   end
 end
