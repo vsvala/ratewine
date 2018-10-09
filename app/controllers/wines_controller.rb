@@ -39,7 +39,7 @@ class WinesController < ApplicationController
         format.json { render :show, status: :created, location: @wine }
       else
         @wineyards = Wineyard.all
-        @styles = Style.all # %w[Red White Rose Sparkling Champagne Dessert]
+        @styles = Style.all
         format.html { render :new }
         format.json { render json: @wine.errors, status: :unprocessable_entity }
       end

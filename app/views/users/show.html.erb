@@ -1,11 +1,11 @@
-<h1> <%= @user.username %>
+<h1> <%= @user.username %></h1> 
+  <% if current_user%>
   <% if @user.close %>
-    <span class="badge badge-info">account closed</span>
+ <h1><span class="badge badge-info">account closed</span></h1> 
  <% end %> 
-</h1> 
-<% if current_user.admin %>
+ 
  <% new_status = @user.close? ? "open" : "close" %>
-  <%= link_to new_status, toggle_useractivity_user_path(@user.id), method: :post, class: "btn btn-danger" %>
+  <%= link_to new_status, toggle_useractivity_user_path(@user.id), method: :post, class: "btn btn-danger" if current_user.admin %>
 <% end %>
 
 <br>
@@ -34,14 +34,12 @@
 <% end %>
 </p>
 
-
 <% if @user == current_user %>
- <p>
-<%= link_to 'Edit', edit_user_path(@user) %> |
-<%= link_to 'Destroy', @user, method: :delete, data: { confirm: 'Are you sure?' } %>
-<% end %> 
-<%= link_to 'Back', users_path %>
- </p>
+ <p><%= link_to 'Edit', edit_user_path(@user), class:'btn btn-primary' %></p>
+<%# <% if current_user.admin%> 
+ <p><%= link_to 'Destroy', @user, class:'btn btn-danger', method: :delete, data: { confirm: 'Are you sure?' } %></p>
+<% end %>
+ <%# <% end %>
 
  <h2>ratings</h2>
 <ul>
@@ -53,8 +51,3 @@
     </li>
  <% end %>
 </ul>
-
-
-
-
-
