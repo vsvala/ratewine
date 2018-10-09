@@ -4,7 +4,7 @@ describe "Wineyards page" do
   it "should not have any wineyards listed before been created" do
     visit wineyards_path
     # save_and_open_page
-    expect(page).to have_content 'Number of wineyards: 0'
+    expect(page).to have_content 'Number of active wineyards: 0'
   end
 
   describe "when wineyards exists" do
@@ -20,7 +20,7 @@ describe "Wineyards page" do
     end
 
     it "lists the existing wineyards and their total number" do
-        expect(page).to have_content "Number of wineyards: #{@wineyards.count}"
+        expect(page).to have_content "Number of active wineyards:" # #{@active_wineyards.count}
         # save_and_open_page
         @wineyards.each do |wineyard_name|
         expect(page).to have_content wineyard_name
@@ -33,7 +33,7 @@ describe "Wineyards page" do
     # save_and_open_page
 
     expect(page).to have_content "Viinitila"
-    expect(page).to have_content "Established in 1897"
+    expect(page).to have_content "Established at 1897"
   end
 end
 end

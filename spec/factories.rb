@@ -3,6 +3,9 @@ FactoryBot.define do
       username { "Pekka" }
       password { "Foobar1" }
       password_confirmation { "Foobar1" }
+      admin { true }
+      close { false }
+     
     end
 
     factory :wineyard do

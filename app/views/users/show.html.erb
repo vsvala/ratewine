@@ -16,9 +16,7 @@
 <% if @user.ratings.empty? %>
  wine has not yet been rated!
 <% else %>
-  <p>
-   Has made <%= pluralize(@user.ratings.count, 'rating') %>, average rating <%=round(@user.average_rating) %>
-  </p> 
+  <p> Has <%= pluralize(@user.ratings.count, 'rating') %>, average <%=round(@user.average_rating)%></p> 
   <%# <p><%= @user.average_rating %>
   <p> Favorite wine:<%= @user.favorite_wine%></p>
   <p> Favorite wine style:<%= @user.favorite_wine_style %></p>

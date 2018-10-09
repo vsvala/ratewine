@@ -3,12 +3,14 @@ require 'rails_helper'
 include Helpers
 
 describe "User" do
-  before :each do
-    FactoryBot.create :user
-  end
+  # before :each do
+    let(:user){FactoryBot.create :user}
+
+  # end
 
   describe "who has signed up" do
     it "can signin with right credentials" do
+      allow_any_instance_of(UsersController).to receive(:current_user).and_return(user) 
       sign_in(username: "Pekka", password: "Foobar1")
 
       expect(page).to have_content 'Welcome back!'
@@ -17,6 +19,7 @@ describe "User" do
   end
 
   it "is redirected back to signin form if wrong credentials given" do
+    allow_any_instance_of(UsersController).to receive(:current_user).and_return(user) 
     visit signin_path
     fill_in('username', with:'Pekka')
     fill_in('password', with:'wrong')
@@ -29,6 +32,9 @@ describe "User" do
   end
   
   it "when signed up with good credentials, is added to the system" do
+    allow_any_instance_of(UsersController).to receive(:current_user).and_return(user) 
+
+    
     visit signup_path
     fill_in('user_username', with:'Brian')
     fill_in('user_password', with:'Secret55')
