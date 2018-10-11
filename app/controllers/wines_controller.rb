@@ -12,12 +12,12 @@ class WinesController < ApplicationController
   # GET /wines
   # GET /wines.json
   def index
-    @wines = Wine.all
+    @wines = Wine.includes(:wineyard, :style).all
 
     order = params[:order] || 'name'
 
     @wines = case order
-             when 'name' then @wines.sort_by{ |b| b.name }
+             when 'name' then @wines.sort_by(&:name)
              when 'wineyard' then @wines.sort_by{ |b| b.wineyard.name }
              when 'style' then @wines.sort_by{ |b| b.style.name }
              end
