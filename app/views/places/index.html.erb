@@ -5,6 +5,15 @@
   <%= submit_tag "Search" %>
 <% end %>
 
+<% if @weather%>
+  <img src=<%= @weather['condition']['icon'] %> 
+<% end %>
+
+<%# <p><%= @weather['temp_c'] Celsius</p>
+<%# <img src=<%= @weather['condition']['icon'] %> 
+<%#  <p><strong>wind</strong> <%= (@weather['wind_kph'] * 0.277777778).round(1) %>
+ <%# m/sec, direction <%= @weather['wind_dir']  </p>%> 
+ 
 <h3>places to get your wine</h3>
 <% if @places %>
   <table class="table table-hover">
@@ -31,11 +40,7 @@
 <h3>the current wine weather in <%= @places.first.city %></h3>
 <% end %>
 
-<%# <p><%= @weather['temp_c'] Celsius</p>
-<%# <img src=<%= @weather['condition']['icon'] %> 
-<%#  <p><strong>wind</strong> <%= (@weather['wind_kph'] * 0.277777778).round(1) %>
- <%# m/sec, direction <%= @weather['wind_dir']  </p>%> 
- 
+
 <% if @weathers%>
     <table class="table table-hover">
     <thead>

@@ -5,15 +5,18 @@
 require 'digest/md5'
 class WineyardsController < ApplicationController
   before_action :set_wineyard, only: %i[show edit update destroy]
-  before_action :ensure_that_signed_in, except: [:index, :show]
+  before_action :ensure_that_signed_in, except: [:index, :show, :list]
   before_action :ensure_that_user_is_admin, only: [:destroy]
+
+  def list
+  end
 
   # GET /wineyards
   # GET /wineyards.json
   def index
     @active_wineyards = Wineyard.active
     @retired_wineyards = Wineyard.retired
-    # @wineyards = Wineyard.all
+    @wineyards = Wineyard.all
   end
 
   # GET /wineyards/1

@@ -47,6 +47,7 @@
           <% if current_user %>
             <li class="nav-item dropdown">
              <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"><%=u%></a>
+              
               <div class="dropdown-menu">
                 <%= link_to 'my page', current_user, { class: "dropdown-item" }%>
                 <%= link_to 'rate a wine', new_rating_path, { class: "dropdown-item" }%>

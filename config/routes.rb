@@ -9,6 +9,8 @@ Rails.application.routes.draw do
   resources :wineyards
   resource :session, only: [:new, :create, :destroy]
   root 'wineyards#index'
+  get 'wineyardlist', to:'wineyards#list'
+  get 'winelist', to:'wines#list'
   get 'kaikki_vinkut', to: 'wines#index'
   get 'signup', to: 'users#new'
   get 'signin', to: 'sessions#new'

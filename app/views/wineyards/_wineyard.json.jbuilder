@@ -1,4 +1,6 @@
 # frozen_string_literal: true
 
-json.extract! wineyard, :id, :name, :year, :created_at, :updated_at
-json.url wineyard_url(wineyard, format: :json)
+json.extract! wineyard, :id, :name, :year, :active
+json.wine do
+  json.count wineyard.wines.count
+end
