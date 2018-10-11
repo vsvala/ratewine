@@ -20,7 +20,7 @@ describe "Wineyards page" do
     end
 
     it "lists the existing wineyards and their total number" do
-        expect(page).to have_content "Number of active wineyards:" # #{@active_wineyards.count}
+        expect(page).to have_content "Number of active wineyards: #{ Wineyard.active.count }"
         # save_and_open_page
         @wineyards.each do |wineyard_name|
         expect(page).to have_content wineyard_name

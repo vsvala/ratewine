@@ -11,7 +11,7 @@ end
 it "is added if name and style field is valid" do
 
     visit new_wine_path
-    save_and_open_page
+    # save_and_open_page
 
     fill_in('Name', with:'TestiViini')
     select('Red', from:'wine[style_id]')
