@@ -11,9 +11,9 @@ class WineClubsController < ApplicationController
     order = params[:order] || 'name'
 
     @wine_clubs = case order
-                  when 'name' then @wine_clubs.sort_by{ |b| b.name }
-                  when 'founded' then @wine_clubs.sort_by{ |b| b.founded }
-                  when 'city' then @wine_clubs.sort_by{ |b| b.city }
+                  when 'name' then @wine_clubs.sort_by(&:name)
+                  when 'founded' then @wine_clubs.sort_by(&:founded)
+                  when 'city' then @wine_clubs.sort_by(&:city)
                   end
   end
 

@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 class RatingsController < ApplicationController
+  extend Top
   before_action :set_rating, only: [:show]
 
   def new
@@ -32,6 +33,15 @@ class RatingsController < ApplicationController
   # GET /ratings
   # GET /ratings.json
   def index
+    # Rails.cache.write("wine top 3", Wine.top(3)) if cache_does_not_contain_data_or_it_is_too_old
+    # @top_wines = Rails.cache.read "wine top 3"
+
+    # @ratings = Rating.recent
+    # @wines = Wine.top(3)
+    # @styles = Style.top(3)
+    # @wineyard = Wineyard.top(3)
+    # @users = User.top(3)
+
     @top_users = User.top 3
     @top_wines = Wine.top 3
     @top_wineyards = Wineyard.top 3

@@ -1,4 +1,5 @@
-<h2>
+<% cache @wineyard do %> 
+h2>
   <%= @wineyard.name %>
   <% if not @wineyard.active  %>
     <span class="badge badge-info">retired</span>
@@ -22,6 +23,10 @@
 <p>Has <%= pluralize(@wineyard.ratings.count, 'rating') %>, average <%=round(@wineyard.average_rating) %></p>
  <%# <p><%= @wineyard.average_rating %>
 <% end %>
+
+<% end %>
+
+<!- cachaamaton osa ->
 <br>
 <% if current_user %>
 <%= link_to "change activity", toggle_activity_wineyard_path(@wineyard.id), method: :post, class: "btn btn-primary" %>

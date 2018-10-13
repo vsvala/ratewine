@@ -3,6 +3,15 @@ class SessionsController < ApplicationController
     # renderöi kirjautumissivun
   end
 
+  def create_oauth
+    request.env['omniauth.auth'].info
+    #<OmniAuth::AuthHash::InfoHash email="mluukkai@iki.fi" image="https://avatars1.githubusercontent.com/u/523235?v=4" name="Matti Luukkainen" nickname="mluukkai" urls=#<OmniAuth::AuthHash Blog="" GitHub="https://github.com/mluukkai">>
+    auth = request.env["omniauth.auth"]
+    user = User.find_by_provider_and_uid(auth["provider"], auth["uid"]) || User.create_with_omniauth(auth)
+    session[:user_id] = user.id
+    redirect_to root_url, :notice => "Signed in!"
+  end
+
   def create
     # haetaan usernamea vastaava käyttäjä tietokannasta
     user = User.find_by username: params[:username]

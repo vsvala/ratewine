@@ -5,14 +5,18 @@
   <%= submit_tag "Search" %>
 <% end %>
 
-<% if @weather%>
-  <img src=<%= @weather['condition']['icon'] %> 
+<% if @places %>
+<h3>the current wine weather in <%= @places.first.city %></h3>
 <% end %>
 
-<%# <p><%= @weather['temp_c'] Celsius</p>
-<%# <img src=<%= @weather['condition']['icon'] %> 
-<%#  <p><strong>wind</strong> <%= (@weather['wind_kph'] * 0.277777778).round(1) %>
- <%# m/sec, direction <%= @weather['wind_dir']  </p>%> 
+<% if @weather%>
+  <img src=<%= @weather['condition']['icon'] %> 
+    <p><%= @weather['temp_c'] %> Celsius </p>
+  <p><strong>wind</strong> <%= @weather['wind_kph'] %>  m/sec, direction <%= @weather['wind_dir'] %> </p>
+  <%# <p><strong>wind</strong> <%= (@weather['wind_kph'] * 0.277777778).round(1) %> 
+   <%# m/sec, direction <%= @weather['wind_dir'] %>
+<% end %>
+
  
 <h3>places to get your wine</h3>
 <% if @places %>
@@ -36,25 +40,4 @@
   </table>
 <% end %>
 
-<% if @places %>
-<h3>the current wine weather in <%= @places.first.city %></h3>
-<% end %>
-
-
-<% if @weathers%>
-    <table class="table table-hover">
-    <thead>
-      <% Weather.rendered_fields.each do |field| %>
-        <th><%= field %></th>
-      <% end %>
-    </thead>
-    <% @weathers.each do |weather| %>
-      <tr>
-        <% Weather.rendered_fields.each do |field| %>
-          <td><%= weather.send(field) %></td>
-        <% end %>
-      </tr>
-    <% end %>
-  </table>
-<% end %>
 

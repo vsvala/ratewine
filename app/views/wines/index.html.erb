@@ -1,4 +1,5 @@
 <h1>Wines</h1>
+<% cache "winelist-#{@order}", skip_digest: true do %>
 
 <table class="table table-hover">
   <thead>
@@ -26,8 +27,8 @@
     <% end %>
   </tbody>
 </table>
-
-
+<% end %>
+<br>
 <%= link_to('New Wine', new_wine_path, class:'btn btn-primary') if current_user %>
 <br>
 <br>

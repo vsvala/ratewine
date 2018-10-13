@@ -14,6 +14,8 @@ class WineyardsController < ApplicationController
   # GET /wineyards
   # GET /wineyards.json
   def index
+    return if request.format.html? && fragment_exist?('wineyardlist')
+
     @active_wineyards = Wineyard.active
     @retired_wineyards = Wineyard.retired
     @wineyards = Wineyard.all
@@ -35,6 +37,7 @@ class WineyardsController < ApplicationController
   # POST /wineyards
   # POST /wineyards.json
   def create
+    expire_fragment('wineyardlist')
     @wineyard = Wineyard.new(wineyard_params)
 
     respond_to do |format|
@@ -51,6 +54,7 @@ class WineyardsController < ApplicationController
   # PATCH/PUT /wineyards/1
   # PATCH/PUT /wineyards/1.json
   def update
+    expire_fragment('wineyardlist')
     respond_to do |format|
       if @wineyard.update(wineyard_params)
         format.html { redirect_to @wineyard, notice: 'Wineyard was successfully updated.' }
@@ -65,6 +69,7 @@ class WineyardsController < ApplicationController
   # DELETE /wineyards/1
   # DELETE /wineyards/1.json
   def destroy
+    expire_fragment('wineyardlist')
     @wineyard.destroy
     respond_to do |format|
       format.html { redirect_to wineyards_url, notice: 'Wineyard destroyed.' }

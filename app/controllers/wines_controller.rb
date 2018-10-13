@@ -12,11 +12,12 @@ class WinesController < ApplicationController
   # GET /wines
   # GET /wines.json
   def index
+    @order = params[:order] || 'name'
+    # jos fragmentti olemassa, lopetetaan metodi tähän (eli renderöidään heti näkymä)
+    return if request.format.html? && fragment_exist?("winelist-#{@order}")
+
     @wines = Wine.includes(:wineyard, :style).all
-
-    order = params[:order] || 'name'
-
-    @wines = case order
+    @wines = case @order
              when 'name' then @wines.sort_by(&:name)
              when 'wineyard' then @wines.sort_by{ |b| b.wineyard.name }
              when 'style' then @wines.sort_by{ |b| b.style.name }
@@ -42,6 +43,7 @@ class WinesController < ApplicationController
   # POST /wines
   # POST /wines.json
   def create
+    ["winelist-name", "winelist-wineyard", "winelist-style"].each{ |f| expire_fragment(f) }
     @wine = Wine.new(wine_params)
 
     respond_to do |format|
@@ -60,6 +62,7 @@ class WinesController < ApplicationController
   # PATCH/PUT /wines/1
   # PATCH/PUT /wines/1.json
   def update
+    ["winelist-name", "winelist-wineyard", "winelist-style"].each{ |f| expire_fragment(f) }
     respond_to do |format|
       if @wine.update(wine_params)
         format.html { redirect_to @wine, notice: 'Wine was successfully updated.' }
@@ -74,6 +77,7 @@ class WinesController < ApplicationController
   # DELETE /wines/1
   # DELETE /wines/1.json
   def destroy
+    ["winelist-name", "winelist-wineyard", "winelist-style"].each{ |f| expire_fragment(f) }
     @wine.destroy
     respond_to do |format|
       format.html { redirect_to wines_url, notice: 'Wine was successfully destroyed.' }
