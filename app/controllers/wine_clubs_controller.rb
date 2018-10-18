@@ -26,7 +26,7 @@ class WineClubsController < ApplicationController
     @membership = Membership.where(user: current_user, wine_club: @wine_club).first
 
     if @membership.nil?
-      @membership = Membership.new
+      @membership = Membership.new, if @membership.nil?
       @membership.wine_club = @wine_club
       # @membership = Membership.new(@wine_club) if !@membership
     end

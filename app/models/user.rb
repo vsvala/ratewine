@@ -38,7 +38,7 @@ class User < ApplicationRecord
   # end
 
   # def self.create_with_omniauth(auth)
-  #   where(auth.slice(:provider, :uid)).first_or_initialize.tap 
+  #   where(auth.slice(:provider, :uid)).first_or_initialize.tap
   #   create! do |user|
   #     user.provider = auth["provider"]
   #     user.uid = auth["uid"]
@@ -53,7 +53,7 @@ class User < ApplicationRecord
   #   where(provider: provider, uid: uid).first
   # end
   #   def self.from_omniauth(auth)
-  #   where(auth.slice(:provider, :uid)).first_or_initialize.tap 
+  #   where(auth.slice(:provider, :uid)).first_or_initialize.tap
   #     create! do |user|
   #     user.provider = auth.provider
   #     user.uid = auth.uid

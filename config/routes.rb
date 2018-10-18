@@ -15,6 +15,7 @@ Rails.application.routes.draw do
   get 'kaikki_vinkut', to: 'wines#index'
   get 'signup', to: 'users#new'
   get 'signin', to: 'sessions#new'
+  get 'wine_club/:id', to:'wine_club#show'
   delete 'signout', to: 'sessions#destroy'
   resources :places, only: [:index, :show]
   # mikä generoi samat polut kuin seuraavat kaksi

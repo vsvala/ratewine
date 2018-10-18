@@ -4,8 +4,8 @@ class SessionsController < ApplicationController
   end
 
   def create_oauth
-    info = request.env["omniauth.auth"].info
-    auth = request.env["omniauth.auth"]
+    # info = request.env["omniauth.auth"].info
+    # auth = request.env["omniauth.auth"]
     # user = User.find_or_create_by(auth["provider"], auth["uid"]) || User.create_with_omniauth(auth)
     # session[:user_id] = user.id
     # #redirect_to user_path(user), notice: "Signed in!"
@@ -27,8 +27,6 @@ class SessionsController < ApplicationController
     # haetaan usernamea vastaava käyttäjä tietokannasta
     user = User.find_by username: params[:username]
     # tarkastetaan että käyttäjä olemassa, ja että salasana on oikea
-    # user && user.authenticate(params[:password])
-
     if user&.authenticate(params[:password])
       session[:user_id] = user.id
       # uudelleen ohjataan käyttäjä omalle sivulleen
