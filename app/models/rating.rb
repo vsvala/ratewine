@@ -3,7 +3,7 @@
 # My comment
 class Rating < ActiveRecord::Base
   include RatingAverage
-  extend Top
+  # extend Top
   belongs_to :wine, touch: true
   belongs_to :user # rating kuuluu myös käyttäjään
   validates :score, numericality: { greater_than_or_equal_to: 1,

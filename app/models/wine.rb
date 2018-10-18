@@ -3,7 +3,7 @@
 # My comment
 class Wine < ActiveRecord::Base
   include RatingAverage
-  extend Top
+  # extend Top
   belongs_to :wineyard, touch: true
   belongs_to :style
   has_many :ratings, dependent: :destroy
