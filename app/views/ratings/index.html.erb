@@ -87,7 +87,7 @@
   <tbody>
   <% @top_users.each do |user| %>
       <tr>
-        <td><%= link_to user.username, user %></td>
+        <td><%= user.username %></td>
            <td><%= user.ratings.count %></td>
         <td></td>
       </tr>
