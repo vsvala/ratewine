@@ -11,6 +11,8 @@ class UsersController < ApplicationController
   # GET /users/1
   # GET /users/1.json
   def show
+    @approved_membership = Membership.confirmed
+    @waitlist_membership = Membership.notconfirmed
   end
 
   # GET /users/new

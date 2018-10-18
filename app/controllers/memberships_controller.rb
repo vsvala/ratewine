@@ -10,6 +10,8 @@ class MembershipsController < ApplicationController
   # GET /memberships/1
   # GET /memberships/1.json
   def show
+    @true_membership = Membership.confirmed
+    @waitlist_membership = Membership.notconfirmed
   end
 
   # GET /memberships/new
@@ -73,6 +75,6 @@ class MembershipsController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def membership_params
-    params.require(:membership).permit(:wine_club_id, :user_id)
+    params.require(:membership).permit(:wine_club_id, :user_id, :confirm)
   end
 end

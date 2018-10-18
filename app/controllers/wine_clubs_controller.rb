@@ -20,6 +20,9 @@ class WineClubsController < ApplicationController
   # GET /wine_clubs/1
   # GET /wine_clubs/1.json
   def show
+    @true_membership = Membership.confirmed
+    @waitlist_membership = Membership.notconfirmed
+
     @membership = Membership.where(user: current_user, wine_club: @wine_club).first
 
     if @membership.nil?
@@ -43,8 +46,11 @@ class WineClubsController < ApplicationController
   def create
     @wine_club = WineClub.new(wine_club_params)
 
+    Membership.create(user: current_user, wine_club: @wine_club, confirm: true)
+
     respond_to do |format|
       if @wine_club.save
+
         format.html { redirect_to @wine_club, notice: 'Wine club was successfully created.' }
         format.json { render :show, status: :created, location: @wine_club }
       else
@@ -76,6 +82,12 @@ class WineClubsController < ApplicationController
       format.html { redirect_to wine_clubs_url, notice: 'Wine club was successfully destroyed.' }
       format.json { head :no_content }
     end
+  end
+
+  def toggle_memberstatus
+    member = Membership.find(params[:id])
+    member.update_attribute :confirm, true
+    redirect_to wine_clubs_url, notice: "application confimed"
   end
 
   private

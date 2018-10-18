@@ -25,13 +25,31 @@
 </div>
 </div>
 
+
+<%# 
  <p>
   <% if @user.wine_clubs.any? %>
-    <h3> member of wine clubs</h3>
+    <%# <h3> member of wine clubs</h3>
  <% @user.wine_clubs.each do |club| %>
-<li> <%= link_to club.name, club %> </li>
+<%# <li> <%= link_to club.name, club </li>
   <% end %>
-<% end %>
+
+<p> 
+    <h3> member of wine club</h3>
+ <% @approved_membership.each do |member| %>
+  <% if member.user_id == current_user.id %>
+<li> <%= link_to member.wine_club.name, member %> </li>
+  <% end %>
+ <% end %> 
+</p>
+
+<p>
+    <h3> applied membership of</h3>
+ <% @waitlist_membership.each do |member| %>
+  <% if member.user_id == current_user.id %>
+<li> <%= link_to member.wine_club.name, member %> </li>
+  <% end %>
+ <% end %> 
 </p>
 
 <% if @user == current_user %>

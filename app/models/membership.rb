@@ -6,4 +6,7 @@ class Membership < ApplicationRecord
     scope: :user,
     message: "you are already a member!"
   }
+
+  scope :confirmed, -> { where confirm: true }
+  scope :notconfirmed, -> { where confirm: [nil, false] }
 end

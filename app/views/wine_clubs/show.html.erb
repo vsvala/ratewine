@@ -21,9 +21,12 @@
 
 <h2>Members</h2>
 <ul>
+
   <% @wine_club.membership.each do|member| %> 
+    <% if member.confirm == true %>
   <li><%= link_to member.user.username, member%></li>
   <% end %>
+    <% end %>
 </ul>
 
 <br>
@@ -43,4 +46,21 @@
   <%= f.submit value: "end the membership", class:'btn btn-danger', data: { confirm: 'Are you sure?'}  %>
 <% end %>
 <% end %>
+<br>
+
+  <h2>Outstanding applications</h2>
+  <% @waitlist_membership.each do|member| %> 
+   <% if member.user_id != current_user.id %>   <%#  lista näytetään  vain seuran jäsenille. %>
+   <%#  on jäsen ko. seurassa mutta on vielä waitlistalla vahvistamattomana. %>
+  <% if member.wine_club_id == @wine_club.id %>
+  <li>
+    <%= link_to member.user.username, member%>
+    <%= link_to "confirm", toggle_memberstatus_wine_club_path(member.id), method: :post, class: "btn btn-primary" %> 
+  <% end %>
+  <% end %>
+ </li>
+<% end %>
+
+</ul>
+
 <% end %>

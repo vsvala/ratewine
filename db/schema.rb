@@ -10,13 +10,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_10_11_183159) do
+ActiveRecord::Schema.define(version: 2018_10_16_122517) do
 
   create_table "memberships", force: :cascade do |t|
     t.integer "wine_club_id"
     t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "confirm"
   end
 
   create_table "ratings", force: :cascade do |t|

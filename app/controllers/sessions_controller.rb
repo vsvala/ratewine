@@ -4,12 +4,23 @@ class SessionsController < ApplicationController
   end
 
   def create_oauth
-    request.env['omniauth.auth'].info
-    #<OmniAuth::AuthHash::InfoHash email="mluukkai@iki.fi" image="https://avatars1.githubusercontent.com/u/523235?v=4" name="Matti Luukkainen" nickname="mluukkai" urls=#<OmniAuth::AuthHash Blog="" GitHub="https://github.com/mluukkai">>
+    info = request.env["omniauth.auth"].info
     auth = request.env["omniauth.auth"]
-    user = User.find_by_provider_and_uid(auth["provider"], auth["uid"]) || User.create_with_omniauth(auth)
-    session[:user_id] = user.id
-    redirect_to root_url, :notice => "Signed in!"
+    # user = User.find_or_create_by(auth["provider"], auth["uid"]) || User.create_with_omniauth(auth)
+    # session[:user_id] = user.id
+    # #redirect_to user_path(user), notice: "Signed in!"
+
+    # redirect_to root_path, notice: "Signed in!"
+    # auth = request.env["omniauth.auth"]
+    # user = User.where(:provider => auth['provider'],
+    #                   :uid => auth['uid'].to_s).first || User.create_with_omniauth(auth)
+    # reset_session
+
+    #@user = User.from_omniauth(request.env["omniauth.auth"])
+    # @user = User.create_with_omniauth(auth)
+    #sign_in_and_redirect @user
+    #session[:user_id] = user.id
+    redirect_to root_url, :notice => 'Signed in!'
   end
 
   def create
@@ -35,6 +46,6 @@ class SessionsController < ApplicationController
     # nollataan sessio
     session[:user_id] = nil
     # uudelleenohjataan sovellus pääsivulle
-    redirect_to :root
+    redirect_to :root, :notice => "Signed out!"
   end
 end

@@ -12,7 +12,7 @@ class PlacesController < ApplicationController
       redirect_to places_path, notice: "No locations in #{params[:city]}"
     else
       @weather = WeathermappingApi.weather_in(params[:city]).first
-      @weathers = WeathermappingApi.weather_in(params[:city])
+      # @weathers = WeathermappingApi.weather_in(params[:city])
 
       session[:city] = params[:city]
       render :index

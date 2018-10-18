@@ -1,4 +1,4 @@
-<h1>Beer places search</h1>
+<h1>Wine places search</h1>
 
 <%= form_tag places_path do %>
   city <%= text_field_tag :city, params[:city] %>
@@ -10,7 +10,8 @@
 <% end %>
 
 <% if @weather%>
-  <img src=<%= @weather['condition']['icon'] %> 
+  <%= image_tag(@weather.condition['icon']) %> 
+  <%# <img src=<%= @weather['condition']['icon'] %>  
     <p><%= @weather['temp_c'] %> Celsius </p>
   <p><strong>wind</strong> <%= @weather['wind_kph'] %>  m/sec, direction <%= @weather['wind_dir'] %> </p>
   <%# <p><strong>wind</strong> <%= (@weather['wind_kph'] * 0.277777778).round(1) %> 
