@@ -6,6 +6,11 @@
 
 # Ignore bundler config.
 /.bundle
+/vendor/bundle/
+
+# Ignore test-related files
+/coverage.data
+/coverage/
 
 # Ignore the default SQLite database.
 /db/*.sqlite3
