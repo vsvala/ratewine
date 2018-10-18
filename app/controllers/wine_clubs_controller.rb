@@ -46,10 +46,9 @@ class WineClubsController < ApplicationController
   def create
     @wine_club = WineClub.new(wine_club_params)
 
-    Membership.create(user: current_user, wine_club: @wine_club, confirm: true)
-
     respond_to do |format|
       if @wine_club.save
+        Membership.create(user: current_user, wine_club: @wine_club, confirm: true)
 
         format.html { redirect_to @wine_club, notice: 'Wine club was successfully created.' }
         format.json { render :show, status: :created, location: @wine_club }
