@@ -16,11 +16,11 @@ class SessionsController < ApplicationController
     #                   :uid => auth['uid'].to_s).first || User.create_with_omniauth(auth)
     # reset_session
 
-    #@user = User.from_omniauth(request.env["omniauth.auth"])
+    # @user = User.from_omniauth(request.env["omniauth.auth"])
     # @user = User.create_with_omniauth(auth)
-    #sign_in_and_redirect @user
-    #session[:user_id] = user.id
-    redirect_to root_url, :notice => 'Signed in!'
+    # sign_in_and_redirect @user
+    # session[:user_id] = user.id
+    redirect_to root_url, notice: :'Signed in!'
   end
 
   def create
@@ -46,6 +46,6 @@ class SessionsController < ApplicationController
     # nollataan sessio
     session[:user_id] = nil
     # uudelleenohjataan sovellus pääsivulle
-    redirect_to :root, :notice => "Signed out!"
+    redirect_to :root, notice: :"Signed out!"
   end
 end
