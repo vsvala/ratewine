@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class RatingsController < ApplicationController
-  extend Top
+  # extend Top
   before_action :set_rating, only: [:show]
 
   def new
