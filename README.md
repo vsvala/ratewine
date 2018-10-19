@@ -18,7 +18,7 @@
 # Ruby on Rails sovellus
 
 - sovelluksen luominen: 
-     - rails new ratebeer (Uusi Rails-sovellus luodaan generaattorilla new)
+     - rails new "sovelluksen nimi" (Uusi Rails-sovellus luodaan generaattorilla new)
      - rails g scaffold brewery name:string year:integer (scaffold-generaattori luo kaikki tarvittavat tiedostopohjat
      nimettyinä ja sijoiteltuna Railsin konvention mukaisesti)
      - rails db:migrate (Tietokantataulun luonti) 
