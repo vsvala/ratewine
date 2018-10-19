@@ -8,4 +8,23 @@
  
  
  
+# Ruby on Rails
+
 - Rubyssä ORM-kirjaston: [ActiveRecordin  hakurajapinta](https://guides.rubyonrails.org/active_record_querying.html) tarjoaa mahdollisuudet tietokannan käsittelyyn ja hakujen tekemiseen ohjelmallisesti SQL:lää kirjoittamatta. 
+
+- Riippuvuuksien hallinta: Rails-sovelluksen käyttämät kirjastot eli gemit on määritelty sovelluksen juuressa olevassa Gemfile-nimisessä tiedostossa. Riippuvuudet ladataan komentorivi komennolla bundle install.
+
+
+# Ruby on Rails sovellus
+
+- sovelluksen luominen: 
+     - rails new ratebeer (Uusi Rails-sovellus luodaan generaattorilla new)
+     - rails g scaffold brewery name:string year:integer (scaffold-generaattori luo kaikki tarvittavat tiedostopohjat
+     nimettyinä ja sijoiteltuna Railsin konvention mukaisesti)
+     - rails db:migrate (Tietokantataulun luonti) 
+     
+ - Serverin käynnistys ja sovelluksen suorittaminen
+   - rails server /  rails s  (Komento käynnistää oletusarvoisesti Puma HTTP-palvelimen, joka alkaa suorittamaan hakemistossa  olevaa Rails-sovellusta paikallisen koneen (eli localhost:in) portissa 3000
+
+- Rails konsoli
+ -rails c  (avaa konsolin)
