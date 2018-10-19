@@ -19,7 +19,7 @@
 
 - sovelluksen luominen: 
      - rails new "sovelluksen nimi" (Uusi Rails-sovellus luodaan generaattorilla new)
-     - rails g scaffold brewery name:string year:integer (scaffold-generaattori luo kaikki tarvittavat tiedostopohjat
+     - rails g scaffold wineyard name:string year:integer (scaffold-generaattori luo kaikki tarvittavat tiedostopohjat
      nimettyinä ja sijoiteltuna Railsin konvention mukaisesti)
      - rails db:migrate (Tietokantataulun luonti) 
      
