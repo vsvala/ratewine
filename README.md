@@ -8,4 +8,4 @@
  
  
  
-- Rubyssä tietokannan käsittely tapahtuu ORM-kirjaston: ActiveRecord avulla
+- Rubyssä ORM-kirjaston: [ActiveRecordin  hakurajapinta](https://guides.rubyonrails.org/active_record_querying.html) tarjoaa mahdollisuudet tietokannan käsittelyyn ja hakujen tekemiseen ohjelmallisesti SQL:lää kirjoittamatta. 
