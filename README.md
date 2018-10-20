@@ -83,8 +83,6 @@
        - raise
        -  end
     - Kun lomake lähetetään HTTP *POST-pyynnön parametrit sisältävän hashin, jonka sisällä välittyy lomakkeen tiedot.
-    Parametrit sisältävä hash on kontrollerin sisällä talletettu muuttujaan params.Uuden ratingin tiedot ovat hashissa
-    avaimen :rating arvona, eli pääsemme niihin käsiksi komennolla params[:rating] joka taas on hash jonka arvo on
-    {"beer_id"=>"1", "score"=>"2"}. Eli esim. pistemäärään päästäisiin käsiksi komennolla params[:rating][:score].
+
     
  - Heroku yhteydet
