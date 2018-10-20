@@ -16,7 +16,13 @@
    - Eri ysuorimpäristöjen(development, test, produktion) käyttämät gemit voidaan määritellä Gemfilessä group-lohkojen avulla
 
 
-# Ruby on Rails sovelluksen toiminta
+# Ruby on Rails sovelluksen luominen ja toiminta
+
+ - Serverin käynnistys ja sovelluksen suorittaminen
+   - rails server /  rails s  (Komento käynnistää oletusarvoisesti Puma HTTP-palvelimen, joka alkaa suorittamaan hakemistossa  olevaa Rails-sovellusta paikallisen koneen (eli localhost:in) portissa 3000
+
+- Rails konsoli
+ -rails c  (avaa konsolin)
 
 - sovelluksen luominen: 
      - rails new "sovelluksen nimi" (Uusi Rails-sovellus luodaan generaattorilla new)
@@ -57,12 +63,29 @@
    - root 'wineyards#index' tekee viinitilojen listasta sovelluksen oletusarvoinen kotisivun' 
    - saman voi ilmaista: get '/', to: 'wineyards#index' eli reititä polulle '/' tuleva HTTP GET -pyyntö käsiteltäväksi luokan
    WineyardsController metodille index.
- 
+   
      
- - Serverin käynnistys ja sovelluksen suorittaminen
-   - rails server /  rails s  (Komento käynnistää oletusarvoisesti Puma HTTP-palvelimen, joka alkaa suorittamaan hakemistossa  olevaa Rails-sovellusta paikallisen koneen (eli localhost:in) portissa 3000
-
-- Rails konsoli
- -rails c  (avaa konsolin)
- 
+ - Lomakkeen luominen
+    - Railsin metodi [form_for](http://guides.rubyonrails.org/form_helpers.html#dealing-with-model-objects)  muodostaa 
+    automaattisesti oikeaan osoitteeseen lähetettävän, oikeanlaisen lomakkeem, jossa on syöttökentät kaikille parametrina
+    olevan tyyppisen olion attribuuteille.
+    - Railsin konventioiden mukaan Rating-olion luontiin tarkoitetun lomakkeen tulee löytyä osoitteesta ratings/new, ja
+    lomakkeeseen pääsyn hoitaa ratings-kontrollerin metodi new.
+    - get 'ratings/new', to:'ratings#new' Luo vastaavan reitin routes.rb:hen   http://localhost:3000/ratings/new
+    -Luodaan nyt lomake näkymä eli tiedosto /app/views/ratings/new.html.erb:
+     <h2>Create new rating</h2>
+    <%= form_for(@rating) do |f| %>
+    beer id: <%= f.number_field :beer_id %>
+   score: <%= f.number_field :score %>
+    <%= f.submit %>
+    <% end %>
+    - Uuden olion luonnista vastaava controllerin metodi on Railsin konvention mukaan nimeltään create
+   def create
+   raise
+    end
+    - Kun lomake lähetetään HTTP *POST-pyynnön parametrit sisältävän hashin, jonka sisällä välittyy lomakkeen tiedot.
+    Parametrit sisältävä hash on kontrollerin sisällä talletettu muuttujaan params.Uuden ratingin tiedot ovat hashissa
+    avaimen :rating arvona, eli pääsemme niihin käsiksi komennolla params[:rating] joka taas on hash jonka arvo on
+    {"beer_id"=>"1", "score"=>"2"}. Eli esim. pistemäärään päästäisiin käsiksi komennolla params[:rating][:score].
+    
  - Heroku yhteydet
