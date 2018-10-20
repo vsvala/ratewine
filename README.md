@@ -31,8 +31,10 @@
  
  - Kontrollerin ja näkymä templatin view toiminta 
      - Kontrolleri luokassa kaikkien panimoiden listaa, eli osoitetta /wineyards hallinnoi metodi index joka renderöi
-     näkymätemplatessa app/views/breweries/index.html.erb määritellyn html-sivun
-     - Metodi show renderöi näkymätemplaten show.html.erb, joka huolehtii yksittäisen olion näkymästä esim. /wineyards/3 
+     automaattisesti näkymätemplatessa app/views/breweries/index.html.erb määritellyn html-sivun
+     - Metodi show renderöi näkymätemplaten show.html.erb, joka huolehtii yksittäisen olion näkymästä esim. /wineyards/3
+     - Eksplisiittinen render-metodin kutsuminen on tarpeen vain silloin kun kontrolleri renderöi jonkin muun kuin
+     oletusnäkymän.
      - Näkymätemplatet, eli erb-tiedostot ovat html:ää, joihin on upotettu Ruby-koodia <% %> merkkien sisälle. <%= %> taas
      aiheuttaa Ruby-komennon arvon tulostumisen ruudulle.
      - @wineyard= Brewery.all kaikkien viinitilojen listan haku kannasta ja tallennus muuttujaan
