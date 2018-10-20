@@ -28,7 +28,7 @@
      belongs_to:wineyard ja Wineyard luokkaan has_many :wines. Lisäksi viinille täytyy luoda integer-tyyppinen kenttä b
      wineyard_id, joka toimii vierasavaimena (foreign key). 
  
- Kontrollerin ja näkymä templatin view toiminta   
+ - Kontrollerin ja näkymä templatin view toiminta 
      - Kontrolleri luokan index metodi renderöi näkymätemplatessa app/views/breweries/index.html.erb määritellyn html-sivun
      - Metodi show renderöi näkymätemplaten show.html.erb, joka huolehtii yksittäisen olion näkymästä
      - Näkymätemplatet, eli erb-tiedostot ovat html:ää, joihin on upotettu Ruby-koodia <% %> merkkien sisälle. <%= %> taas
