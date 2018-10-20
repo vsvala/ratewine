@@ -73,16 +73,15 @@
     lomakkeeseen pääsyn hoitaa ratings-kontrollerin metodi new.
     - get 'ratings/new', to:'ratings#new' Luo vastaavan reitin routes.rb:hen   http://localhost:3000/ratings/new
     -Luodaan nyt lomake näkymä eli tiedosto /app/views/ratings/new.html.erb:
-     <h2>Create new rating</h2>
-    <%= form_for(@rating) do |f| %>
-    beer id: <%= f.number_field :beer_id %>
-   score: <%= f.number_field :score %>
-    <%= f.submit %>
-    <% end %>
+       - <%= form_for(@rating) do |f| %>
+       - beer id: <%= f.number_field :beer_id %>
+       - score: <%= f.number_field :score %>
+       - <%= f.submit %>
+       - <% end %>
     - Uuden olion luonnista vastaava controllerin metodi on Railsin konvention mukaan nimeltään create
-   def create
-   raise
-    end
+       - def create
+       - raise
+       -  end
     - Kun lomake lähetetään HTTP *POST-pyynnön parametrit sisältävän hashin, jonka sisällä välittyy lomakkeen tiedot.
     Parametrit sisältävä hash on kontrollerin sisällä talletettu muuttujaan params.Uuden ratingin tiedot ovat hashissa
     avaimen :rating arvona, eli pääsemme niihin käsiksi komennolla params[:rating] joka taas on hash jonka arvo on
