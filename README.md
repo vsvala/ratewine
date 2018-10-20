@@ -30,12 +30,15 @@
      - orvot = Wine.all.select{ |b| b.wineyard.nil? }, orvot.each{ |orpo| orpo.delete (orvoksi jääneiden olioien poisto)
  
  - Kontrollerin ja näkymä templatin view toiminta 
-     - Kontrolleri luokan index metodi renderöi näkymätemplatessa app/views/breweries/index.html.erb määritellyn html-sivun
-     - Metodi show renderöi näkymätemplaten show.html.erb, joka huolehtii yksittäisen olion näkymästä
+     - Kontrolleri luokassa kaikkien panimoiden listaa, eli osoitetta /wineyards hallinnoi metodi index joka renderöi
+     näkymätemplatessa app/views/breweries/index.html.erb määritellyn html-sivun
+     - Metodi show renderöi näkymätemplaten show.html.erb, joka huolehtii yksittäisen olion näkymästä esim. /wineyards/3 
      - Näkymätemplatet, eli erb-tiedostot ovat html:ää, joihin on upotettu Ruby-koodia <% %> merkkien sisälle. <%= %> taas
      aiheuttaa Ruby-komennon arvon tulostumisen ruudulle.
      - @wineyard= Brewery.all kaikkien viinitilojen listan haku kannasta ja tallennus muuttujaan
      - @wineyard = Wineyard.find(params[:id]) yksittäisen olion haku kannasta
+     - Linkin generointi:<%= link_to "linkki viintilaan #{wineyard.name}", wineyard %> 
+     tai <%= link_to "linkki panimoon #{brewery.name}", brewery_path(brewery.id) %>
      
  - Serverin käynnistys ja sovelluksen suorittaminen
    - rails server /  rails s  (Komento käynnistää oletusarvoisesti Puma HTTP-palvelimen, joka alkaa suorittamaan hakemistossa  olevaa Rails-sovellusta paikallisen koneen (eli localhost:in) portissa 3000
