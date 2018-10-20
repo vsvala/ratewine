@@ -47,3 +47,5 @@
 
 - Rails konsoli
  -rails c  (avaa konsolin)
+ 
+ - Heroku yhteydet
