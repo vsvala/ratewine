@@ -44,7 +44,7 @@
      tai <%= link_to "linkki panimoon #{brewery.name}", brewery_path(brewery.id) %>
      
  - Sovelluksen layout
-    -Railsissa saadaan määriteltyä kaikille sivuille yhteiset osat sovelluksen layoutiin, eli tiedostoon
+    - Railsissa saadaan määriteltyä kaikille sivuille yhteiset osat sovelluksen layoutiin, eli tiedostoon
     app/views/layouts/application.html.erb. 
     - Navigointipalkin  saa näkyville kaikille sivuille sijoittamalla sen koodin sovelluksen layoutin body-elementtin sisään
     - Ulkoasua voi muotoilla app/assets/stylesheets/application.css  kautta
