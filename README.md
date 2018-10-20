@@ -80,7 +80,8 @@
        - <% end %>
     - Uuden olion luonnista vastaava controllerin metodi on Railsin konvention mukaan nimeltään create
        - def create
-       -    Rating.create params.require(:rating).permit(:score, :wine_id) 
+       -   Rating.create params.require(:rating).permit(:score, :wine_id)
+       -   redirect_to ratings_path '#ratings_path on Railsin tarjoama polkuapumetodi, joka tarkoittaa samaa kuin "/ratings"
        -  end
     - Kun lomake lähetetään HTTP *POST-pyynnön parametrit sisältävän hashin, jonka sisällä välittyy lomakkeen tiedot
     params[:rating], kyseess on hash, joka on muotoa {"wine_id"=>"1", "score"=>"30"}
@@ -89,6 +90,8 @@
     Rating.create params[:rating] ei toimi. Rails 4:stä lähtien kontrollerin on lueteltava eksplisiittisesti mitä
     hashin params sisällöstä voidaan massasijoittaa olioiden luonnin yhteydessä. Tähän kontrolleri käyttää params:in
     metodeja require ja permit.
+    - redirect_to ratings_path uudelleenohjauksessa palvelin lähettää selaimelle statuskoodilla 302 varustetun vastauksen,
+    joka ei sisällä  HTML:ää. Vastaus sisältää vain osoitteen, mihin selain tekee automaattisesti uuden HTTP GET -pyynnön. 
 
 
 ### Debuggaus
