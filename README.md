@@ -27,6 +27,7 @@
      - Yhdestä moneen tietokanta liitokset saadaan luotua lisäämällä modeleihin esim. Wine-luokkaan rivi 
      belongs_to:wineyard ja Wineyard luokkaan has_many :wines. Lisäksi viinille täytyy luoda integer-tyyppinen kenttä b
      wineyard_id, joka toimii vierasavaimena (foreign key). 
+     - orvot = Wine.all.select{ |b| b.wineyard.nil? }, orvot.each{ |orpo| orpo.delete (orvoksi jääneiden olioien poisto)
  
  - Kontrollerin ja näkymä templatin view toiminta 
      - Kontrolleri luokan index metodi renderöi näkymätemplatessa app/views/breweries/index.html.erb määritellyn html-sivun
