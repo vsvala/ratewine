@@ -80,9 +80,11 @@
        - <% end %>
     - Uuden olion luonnista vastaava controllerin metodi on Railsin konvention mukaan nimeltään create
        - def create
-       - raise
+       -    Rating.create params.require(:rating).permit(:score, :wine_id) 
+       - # joka siis tarkoittaa samaa kuin Rating.create wine_id:"1", score:"30"
        -  end
-    - Kun lomake lähetetään HTTP *POST-pyynnön parametrit sisältävän hashin, jonka sisällä välittyy lomakkeen tiedot.
+    - Kun lomake lähetetään HTTP *POST-pyynnön parametrit sisältävän hashin, jonka sisällä välittyy lomakkeen tiedot
+    params[:rating], kyseess on hash, joka on muotoa {"wine_id"=>"1", "score"=>"30"}
 
 ### Debuggaus
 - Rails on jo konfiguroinut sovelluksesi käyttöön [byebug-debuggerin](http://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-byebug-gem) ja railsin web-konsolin. 
