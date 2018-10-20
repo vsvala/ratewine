@@ -43,6 +43,22 @@
      - Linkin generointi:<%= link_to "linkki viintilaan #{wineyard.name}", wineyard %> 
      tai <%= link_to "linkki panimoon #{brewery.name}", brewery_path(brewery.id) %>
      
+ - Sovelluksen layout
+    -Railsissa saadaan määriteltyä kaikille sivuille yhteiset osat sovelluksen layoutiin, eli tiedostoon
+    app/views/layouts/application.html.erb. 
+    - Navigointipalkin  saa näkyville kaikille sivuille sijoittamalla sen koodin sovelluksen layoutin body-elementtin sisään
+    - Ulkoasua voi muotoilla app/assets/stylesheets/application.css  kautta
+ 
+ 
+ - Reititys routes.rb
+   - Railsin Routing-komponentin vastuulla on ohjata eli reitittää sovellukselle tulevien HTTP-pyyntöjen käsittely sopivan
+   kontrollerin metodille eli tieto siitä miten eri URLeihin tulevat pyynnöt tulee reitittää, konfiguroidaan tiedostoon
+   config/routes.rb
+   - root 'wineyards#index' tekee viinitilojen listasta sovelluksen oletusarvoinen kotisivun' 
+   - saman voi ilmaista: get '/', to: 'wineyards#index' eli reititä polulle '/' tuleva HTTP GET -pyyntö käsiteltäväksi luokan
+   WineyardsController metodille index.
+ 
+     
  - Serverin käynnistys ja sovelluksen suorittaminen
    - rails server /  rails s  (Komento käynnistää oletusarvoisesti Puma HTTP-palvelimen, joka alkaa suorittamaan hakemistossa  olevaa Rails-sovellusta paikallisen koneen (eli localhost:in) portissa 3000
 
