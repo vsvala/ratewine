@@ -28,6 +28,10 @@
      belongs_to:wineyard ja Wineyard luokkaan has_many :wines. Lisäksi viinille täytyy luoda integer-tyyppinen kenttä b
      wineyard_id, joka toimii vierasavaimena (foreign key). 
      
+     -kontrolleri luokan index metodi renderöi näkymätemplatessa app/views/breweries/index.html.erb määritellyn html-sivun
+     -Näkymätemplatet, eli erb-tiedostot ovat html:ää, joihin on upotettu Ruby-koodiae <% %> merkkien sisälle. <%= %> taas
+     aiheuttaa Ruby-komennon arvon tulostumisen ruudulle.
+     
  - Serverin käynnistys ja sovelluksen suorittaminen
    - rails server /  rails s  (Komento käynnistää oletusarvoisesti Puma HTTP-palvelimen, joka alkaa suorittamaan hakemistossa  olevaa Rails-sovellusta paikallisen koneen (eli localhost:in) portissa 3000
 
