@@ -81,10 +81,15 @@
     - Uuden olion luonnista vastaava controllerin metodi on Railsin konvention mukaan nimeltään create
        - def create
        -    Rating.create params.require(:rating).permit(:score, :wine_id) 
-       - # joka siis tarkoittaa samaa kuin Rating.create wine_id:"1", score:"30"
        -  end
     - Kun lomake lähetetään HTTP *POST-pyynnön parametrit sisältävän hashin, jonka sisällä välittyy lomakkeen tiedot
     params[:rating], kyseess on hash, joka on muotoa {"wine_id"=>"1", "score"=>"30"}
+    -Tietoturvasyistä Rails ei kuitenkaan salli mielivaltaista params-muuttujasta tapahtuvaa "massasijoitusta" 
+    (engl. mass assignment eli kaikkien parametrien antamista hashina) olion luomisen yhteydessä, eli  
+    Rating.create params[:rating] ei toimi. Rails 4:stä lähtien kontrollerin on lueteltava eksplisiittisesti mitä
+    hashin params sisällöstä voidaan massasijoittaa olioiden luonnin yhteydessä. Tähän kontrolleri käyttää params:in
+    metodeja require ja permit.
+
 
 ### Debuggaus
 - Rails on jo konfiguroinut sovelluksesi käyttöön [byebug-debuggerin](http://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-byebug-gem) ja railsin web-konsolin. 
