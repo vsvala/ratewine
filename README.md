@@ -84,5 +84,10 @@
        -  end
     - Kun lomake lähetetään HTTP *POST-pyynnön parametrit sisältävän hashin, jonka sisällä välittyy lomakkeen tiedot.
 
+### Debukkaus
+-Rails on jo konfiguroinut sovelluksesi käyttöön [byebug-debuggerin](http://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-byebug-gem) ja railsin web-konsolin. 
+Jos lisäät koodiin komennon binding.pry voit käyttää Pry:tä debuggerina:kun koodirivi suoritetaan, suoritus pysähtyy ja Pry-sessio aukeaa koodirivin kohdalle. Voit jatkaa suoritusta komennolla exit
+
+- Byebugia käytettäessä lisätään kontrollerin alkuun, eli sille kohtaan koodia jota haluamme tarkkailla, komento byebug, jolloin sovellus pysähtyy komennon byebug kohdalle.  Terminaaliin josta Rails on käynnistetty, avautuu interaktiivinen konsolinäkymä.Debuggerin konsolissa voi  suorittaa koodia Rails-konsolin tavoin.Debuggerin tärkeimmät komennot lienevät step, next, continue ja help.
     
  - Heroku yhteydet
