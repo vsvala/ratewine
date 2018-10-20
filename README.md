@@ -16,7 +16,7 @@
    - Eri ysuorimpäristöjen(development, test, produktion) käyttämät gemit voidaan määritellä Gemfilessä group-lohkojen avulla
 
 
-# Ruby on Rails sovellus
+# Ruby on Rails sovelluksen toiminta
 
 - sovelluksen luominen: 
      - rails new "sovelluksen nimi" (Uusi Rails-sovellus luodaan generaattorilla new)
