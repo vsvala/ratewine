@@ -99,5 +99,9 @@
 Jos lisäät koodiin komennon binding.pry voit käyttää Pry:tä debuggerina:kun koodirivi suoritetaan, suoritus pysähtyy ja Pry-sessio aukeaa koodirivin kohdalle. Voit jatkaa suoritusta komennolla exit
 
 - Byebugia käytettäessä lisätään kontrollerin alkuun, eli sille kohtaan koodia jota haluamme tarkkailla, komento byebug, jolloin sovellus pysähtyy komennon byebug kohdalle.  Terminaaliin josta Rails on käynnistetty, avautuu interaktiivinen konsolinäkymä.Debuggerin konsolissa voi  suorittaa koodia Rails-konsolin tavoin.Debuggerin tärkeimmät komennot lienevät step, next, continue ja help.
+
+- Rails on sisältänyt versiosta 4.2 alkaen oletusarvoisesti debuggerin tapaan toimivan web-konsolin. Konsolinäkymä avautuu
+automaattisesti jos ohjelmassa syntyy poikkeus. Poikkeuksen voi "aiheuttaa" esim. kirjoittamalla mihin tahansa kohtaan
+koodia raise. Jos lisäät koodiin komennon binding.pry voit käyttää Pry:tä debuggerina:kun koodirivi suoritetaan, suoritus pysähtyy ja Pry-sessio aukeaa koodirivin kohdalle. Voit jatkaa suoritusta komennolla exit
     
  ### Heroku yhteydet
