@@ -53,3 +53,16 @@ group :test do
 end
 - Selaintason testit on tapana sijoittaa hakemistoon spec/features.
 
+## Testauskattavuus
+- Testien rivikattavuus (line coverage) mittaa kuinka monta prosenttia ohjelman koodiriveistä tulee suoritettua testien suorituksen yhteydessä. Rails-sovelluksen testikattavuus on helppo mitata simplecov-gemin avulla, ks. https://github.com/colszowka/simplecov
+
+- Gem otetaan käyttöön lisäämällä Gemfilen test -scopeen rivi: gem 'simplecov', require: false
+
+-Huom normaalin bundle install-komennon sijaan saatat joutua antamaan tässä vaiheessa komennon bundle update, jotta kaikista gemeistä saatiin asennetuiksi yhteensopivat versiot.
+
+- Jotta simplecov saadaan käyttöön tulee tiedoston rails_helper.rb alkuun, kahdeksi ensimmäiseksi riviksi lisätä seuraavat:
+  - require 'simplecov'
+  - SimpleCov.start('rails')
+
+- Tarkempi raportti on nähtävissä avaamalla selaimella tiedosto coverage/index.html
+
