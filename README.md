@@ -109,4 +109,4 @@ Jos lisäät koodiin komennon binding.pry voit käyttää Pry:tä debuggerina:
 automaattisesti jos ohjelmassa syntyy poikkeus. Poikkeuksen voi "aiheuttaa" esim. kirjoittamalla mihin tahansa kohtaan
 koodia raise. Jos lisäät koodiin komennon binding.pry voit käyttää Pry:tä debuggerina:kun koodirivi suoritetaan, suoritus pysähtyy ja Pry-sessio aukeaa koodirivin kohdalle. Voit jatkaa suoritusta komennolla exit
     
- ### Heroku yhteydet
+ ### [Heroku yhteydet](https://github.com/vsvala/ratewine/blob/master/Dokumentaatio/Heroku%20yhteydet.md)
