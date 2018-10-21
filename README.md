@@ -19,7 +19,8 @@
 # Ruby on Rails sovelluksen luominen ja toiminta
 
  - Serverin käynnistys ja sovelluksen suorittaminen
-   - rails server /  rails s  (Komento käynnistää oletusarvoisesti Puma HTTP-palvelimen, joka alkaa suorittamaan hakemistossa  olevaa Rails-sovellusta paikallisen koneen (eli localhost:in) portissa 3000
+   - rails server /  rails s  (Komento käynnistää oletusarvoisesti Puma HTTP-palvelimen, joka alkaa suorittamaan hakemistossa
+   olevaa Rails-sovellusta paikallisen koneen (eli localhost:in) portissa 3000
 
 - Rails konsoli
  -rails c  (avaa konsolin)
@@ -93,6 +94,10 @@
     - redirect_to ratings_path uudelleenohjauksessa palvelin lähettää selaimelle statuskoodilla 302 varustetun vastauksen,
     joka ei sisällä  HTML:ää. Vastaus sisältää vain osoitteen, mihin selain tekee automaattisesti uuden HTTP GET -pyynnön. 
 
+- polkuapumetodit
+  - Rails luo automaattisesti kaikille tiedostoon routes.rb määritellyille reiteille ns. polkuapumetodit (engl. path helper)
+  ei siis ole tarvetta ratings_path-apufunktion sijaan kovakoodata:  redirect_to 'ratings'
+  - rails routes komentorivikomennolla pääsee tarkastelemaan näitä automaattisesti generoituja polkuja
 
 ### Debuggaus
 - Rails on jo konfiguroinut sovelluksesi käyttöön [byebug-debuggerin](http://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-byebug-gem) ja railsin web-konsolin. 
