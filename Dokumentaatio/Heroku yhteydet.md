@@ -21,3 +21,8 @@ undefined method `name' for nil:NilClass. Korjaantuu esim poistamalla:
   - >Wine.all.select{ |b| b.wineyard.nil? }
 => []
   - onnistuu myös seuraavalla: wine.all.select{ |r| r.wineyard.nil? }.each{ |r| r.delete }
+  
+-Tai jos esim. raittauksiin ei ole liitetty useria..-->Luodaan järjestelmään käyttäjä ja laitetaan herokun konsolista kaikkien olemassaolevien reittausten käyttäjäksi järjestelmään ensimmäisenä luotu käyttäjä:
+
+> u = User.first
+> Rating.all.each{ |r| u.ratings << r }
