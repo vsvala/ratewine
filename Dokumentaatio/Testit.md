@@ -6,3 +6,8 @@
   - gem 'rspec-rails', '~> 3.8'
   - end
 - Tämän jälkeen rspec saadaan initialisoitua sovelluksen käyttöön antamalla komentoriviltä komento: rails generate rspec:install
+
+-Yksikkötestit
+
+  - Testipohjan voi luoda käsin tai komentoriviltä rspec-generaattorilla:  rails generate rspec:model user
+  - Tämä luo hakemistoon /spec/models tiedoston user_spec.rb
