@@ -103,11 +103,11 @@
 - [Autentikonti](https://github.com/vsvala/ratewine/blob/master/Dokumentaatio/Autentikointi.md)
 
 ### Rubocob, tyylin tarkastus 
-- Koodin tyylin tarkastuksessa on käytetty  Rubocopia, jonka avulla voimme määritellä koodilemme tyylisäännöstön ja seurata,
+- Koodin tyylin tarkastuksessa on käytetty [Rubocopia](https://github.com/rubocop-hq/rubocop), jonka avulla voimme määritellä koodilemme tyylisäännöstön ja seurata,
 että pidättäydymme säännöstön mukaisessa koodissa.Kun Rubocop on asennettu komentorivin käskyllä: gem install rubocop, voi
 tyylitarkastuksen suorittaa koko koodille tai yksittäiselle tiedostolle seuraavilla komentoriviltä komennolla: 
- - rubocop
- - rubocop app/models/wine.rb
+  - rubocop
+  - rubocop app/models/wine.rb
 
 - Sääntöjen [dokumentaatiosta](http://docs.rubocop.org/en/latest/cops/) voi selvittää tyylivirheiden syitä
 
