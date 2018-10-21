@@ -94,10 +94,13 @@
     - redirect_to ratings_path uudelleenohjauksessa palvelin lähettää selaimelle statuskoodilla 302 varustetun vastauksen,
     joka ei sisällä  HTML:ää. Vastaus sisältää vain osoitteen, mihin selain tekee automaattisesti uuden HTTP GET -pyynnön. 
 
-- polkuapumetodit
+- -Polkuapumetodit
   - Rails luo automaattisesti kaikille tiedostoon routes.rb määritellyille reiteille ns. polkuapumetodit (engl. path helper)
   ei siis ole tarvetta ratings_path-apufunktion sijaan kovakoodata:  redirect_to 'ratings'
   - rails routes komentorivikomennolla pääsee tarkastelemaan näitä automaattisesti generoituja polkuja
+  
+
+- [Autentikonti](https://github.com/vsvala/ratewine/blob/master/Dokumentaatio/Autentikointi.md)
 
 ### Debuggaus
 - Rails on jo konfiguroinut sovelluksesi käyttöön [byebug-debuggerin](http://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-byebug-gem) ja railsin web-konsolin. 
