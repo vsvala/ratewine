@@ -137,4 +137,4 @@ binding.pry
 ### [Testit](https://github.com/vsvala/ratewine/blob/master/Dokumentaatio/Testit.md)
 
 - sovelluksen testaamiseen on käytetty [Rspec:iä](http://rspec.info/),[lisää](https://github.com/rspec/rspec-rails)
-- Testit voidaan ajaa komentorivin komennolla rspec spec
+- Testit voidaan ajaa komentorivin komennolla rspec spec tai rspec spec/models # suoritettaa hakemiston model sisältävät testit ja rspec spec/models/user_spec.rb   # suorittaa user_spec.rb:n määrittelemät testi
