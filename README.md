@@ -107,7 +107,7 @@
 että pidättäydymme säännöstön mukaisessa koodissa.Kun Rubocop on asennettu komentorivin käskyllä: gem install rubocop, voi
 tyylitarkastuksen suorittaa koko koodille tai yksittäiselle tiedostolle seuraavilla komentoriviltä komennolla: 
  - rubocop
- -rubocop app/models/wine.rb
+ - rubocop app/models/wine.rb
 
 - Sääntöjen [dokumentaatiosta](http://docs.rubocop.org/en/latest/cops/) voi selvittää tyylivirheiden syitä
 
