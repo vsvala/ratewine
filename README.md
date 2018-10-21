@@ -102,7 +102,7 @@
 
 - [Autentikonti](https://github.com/vsvala/ratewine/blob/master/Dokumentaatio/Autentikointi.md)
 
--[Sessiot ja kirjautuminen](https://github.com/vsvala/ratewine/blob/master/Dokumentaatio/Sessiotjakirjautuminen.%20md)
+- [Sessiot ja kirjautuminen](https://github.com/vsvala/ratewine/blob/master/Dokumentaatio/Sessiotjakirjautuminen.%20md)
 
 ### Rubocob, tyylin tarkastus 
 - Koodin tyylin tarkastuksessa on käytetty [Rubocopia](https://github.com/rubocop-hq/rubocop), jonka avulla voimme määritellä koodilemme tyylisäännöstön ja seurata,
