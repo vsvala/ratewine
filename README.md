@@ -133,8 +133,8 @@ koodia raise. Jos lisäät koodiin komennon binding.pry voit käyttää Pry:t
 binding.pry
     
  ### [Heroku yhteydet](https://github.com/vsvala/ratewine/blob/master/Dokumentaatio/Heroku%20yhteydet.md)
-
-### Testit
+ 
+### [Testit](https://github.com/vsvala/ratewine/blob/master/Dokumentaatio/Testit.md)
 
 - sovelluksen testaamiseen on käytetty [Rspec:iä](http://rspec.info/),[lisää](https://github.com/rspec/rspec-rails)
 - Testit voidaan ajaa komentorivin komennolla rspec spec
