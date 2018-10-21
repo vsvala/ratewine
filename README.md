@@ -35,6 +35,15 @@
      - Yhdestä moneen tietokanta liitokset saadaan luotua lisäämällä modeleihin esim. Wine-luokkaan rivi 
      belongs_to:wineyard ja Wineyard luokkaan has_many :wines. Lisäksi viinille täytyy luoda integer-tyyppinen kenttä b
      wineyard_id, joka toimii vierasavaimena (foreign key). 
+     - Monesta moneen liitokset  WineClubin ja Userien välille
+       -Luodaan scaffoldingia hyväksikäyttäen model WineClub, jolla on attribuutit name (merkkijono) founded (kokonaisluku)
+       ja city (merkkijono)
+       - Luo scaffoldilla liitostauluksi model Membership, jolla on attribuutteina vierasavaimet User- ja WineClub-olioihin
+       (eli wine_club_id ja user_id)
+       - Litostauluun määritellään  eli modeliin Class membership seuraava:  belongs_to :user, belongs_to :wine_club
+       - Modeliin class WineClub lisätään:  has_many :membership,  has_many :user, through: :memberships
+       - Modeliin class User lisätään:   has_many :memberships, has_many :wine_clubs, through: :memberships
+     
      - orvot = Wine.all.select{ |b| b.wineyard.nil? }, orvot.each{ |orpo| orpo.delete (orvoksi jääneiden olioien poisto)
  
  - Kontrollerin ja näkymä templatin view toiminta 
