@@ -1,13 +1,21 @@
 <br>
+
+<h2>Membership</h2>
 <p>
   <strong>Wine club:</strong>
-  <%= @membership.wine_club_id %>
+    <%= @membership.wine_club.name %>
+    <%= @membership.wine_club_id %>
 </p>
 
 <p>
   <strong>User:</strong>
+
+  <%= @membership.user.username %>
   <%= @membership.user_id %>
 </p>
 
+<% if current_user %>
+
 <%= link_to 'Edit', edit_membership_path(@membership) %> |
 <%= link_to 'Back', memberships_path %>
+<% end %>

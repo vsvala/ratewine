@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
-  get 'auth/:provider/callback', to: 'sessions#create_oauth'
   resources :styles
   resources :memberships
   resources :wine_clubs
@@ -13,10 +12,13 @@ Rails.application.routes.draw do
   get 'wineyardlist', to:'wineyards#list'
   get 'winelist', to:'wines#list'
   get 'kaikki_vinkut', to: 'wines#index'
+  get 'wine_club/:id', to:'wine_club#show'
+
   get 'signup', to: 'users#new'
   get 'signin', to: 'sessions#new'
-  get 'wine_club/:id', to:'wine_club#show'
+  get 'auth/:provider/callback', to: 'sessions#create_oauth'
   delete 'signout', to: 'sessions#destroy'
+  
   resources :places, only: [:index, :show]
   # mikä generoi samat polut kuin seuraavat kaksi
   # get 'places', to:'places#index'

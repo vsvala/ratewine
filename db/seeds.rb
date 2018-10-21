@@ -36,8 +36,8 @@ w2.wines.create name: 'Douce Nature Organic Chardonnay 2017', style: 'White'
 # Wineyard.all.each do |b|
 #     n = rand(wines_in_wineyard)
 #     (1..n).each do |i|
-#       winee = Wine.create! name:"Wine #{b.id} -- #{i}", style:bulk
-#       b.wines << winee
+#       wine = Wine.create! name:"Wine #{b.id} -- #{i}", style:bulk, wineyard:b
+#       b.wines << wine
 #     end
 #   end
 

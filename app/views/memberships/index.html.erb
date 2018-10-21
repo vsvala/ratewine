@@ -3,7 +3,9 @@
 <table class="table table-hover">
   <thead>
     <tr>
+      <th>Wine club id</th>
       <th>Wine club</th>
+        <th>User id</th>
       <th>User</th>
       <th colspan="3"></th>
     </tr>
@@ -12,16 +14,21 @@
   <tbody>
     <% @memberships.each do |membership| %>
       <tr>
-        <td><%= membership.wine_club_id %></td>
-        <td><%= membership.user_id %></td>
-        <td><%= link_to 'Show', membership %></td>
+        <td><%= link_to membership.wine_club_id, membership %></td>
+         <td><%= link_to membership.wine_club.name, membership  %></td>
+        <td><%=link_to membership.user_id, membership.user %></td>
+         <td><%= link_to membership.user.username, membership.user %></td>
+         
+         <% if current_user %> 
         <td><%= link_to 'Edit', edit_membership_path(membership) %></td>
         <td><%= link_to 'Destroy', membership, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          <% end %>
       </tr>
     <% end %>
   </tbody>
 </table>
 
 <br>
+
 
 <%= link_to 'New Membership', new_membership_path %>

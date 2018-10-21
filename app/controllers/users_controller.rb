@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
+  before_action :ensure_that_user_is_admin, only: [:toggle_useractivity]
 
   # GET /users
   # GET /users.json
@@ -88,6 +89,6 @@ class UsersController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def user_params
-    params.require(:user).permit(:username, :password, :password_confirmation, :close, :admin)
+    params.require(:user).permit(:username, :password, :password_confirmation) # :close, :admin
   end
 end

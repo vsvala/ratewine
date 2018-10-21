@@ -4,23 +4,21 @@ class SessionsController < ApplicationController
   end
 
   def create_oauth
-    # info = request.env["omniauth.auth"].info
-    # auth = request.env["omniauth.auth"]
-    # user = User.find_or_create_by(auth["provider"], auth["uid"]) || User.create_with_omniauth(auth)
-    # session[:user_id] = user.id
-    # #redirect_to user_path(user), notice: "Signed in!"
+    username = request.env['omniauth.auth'].info['email']
 
-    # redirect_to root_path, notice: "Signed in!"
-    # auth = request.env["omniauth.auth"]
-    # user = User.where(:provider => auth['provider'],
-    #                   :uid => auth['uid'].to_s).first || User.create_with_omniauth(auth)
-    # reset_session
+    user = User.find_by username: params[:username]
 
-    # @user = User.from_omniauth(request.env["omniauth.auth"])
-    # @user = User.create_with_omniauth(auth)
-    # sign_in_and_redirect @user
-    # session[:user_id] = user.id
-    redirect_to root_url, notice: :'Signed in!'
+    if user&.closed
+      redirect_to signin_path, notice: "your accout is closed, please contact admin"
+    end
+
+    if user.nil?
+      user = User.new username: username
+      user.save(validate: false)
+    end
+
+    session[:user_id] = user.id
+    redirect_to user_path(user), notice: "Welcome!"
   end
 
   def create
