@@ -102,6 +102,16 @@
 
 - [Autentikonti](https://github.com/vsvala/ratewine/blob/master/Dokumentaatio/Autentikointi.md)
 
+### Rubocob, tyylin tarkastus 
+- Koodin tyylin tarkastuksessa on käytetty  Rubocopia, jonka avulla voimme määritellä koodilemme tyylisäännöstön ja seurata,
+että pidättäydymme säännöstön mukaisessa koodissa.Kun Rubocop on asennettu komentorivin käskyllä: gem install rubocop, voi
+tyylitarkastuksen suorittaa koko koodille tai yksittäiselle tiedostolle seuraavilla komentoriviltä komennolla: 
+ - rubocop
+ -rubocop app/models/wine.rb
+
+- Sääntöjen [dokumentaatiosta](http://docs.rubocop.org/en/latest/cops/) voi selvittää tyylivirheiden syitä
+
+- Rubocopin tarkastama säännöstö määritellään projektin juureen sijoitettavassa tiedostossa .rubocop.yml. Tiedoston määrittelemä säännöstö perustuu Relaxed Ruby -tyyliin, jota se tiukentaa muutamien sääntöjen osalta. Tiedostossa myös jätetääm osa projektin tiedostoista tyylitarkastuksen ulkopuolelle.
 
 ### Debuggaus
 - Rails on jo konfiguroinut sovelluksesi käyttöön [byebug-debuggerin](http://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-byebug-gem) ja railsin web-konsolin. 
@@ -114,5 +124,8 @@ automaattisesti jos ohjelmassa syntyy poikkeus. Poikkeuksen voi "aiheuttaa" esim
 koodia raise. Jos lisäät koodiin komennon binding.pry voit käyttää Pry:tä debuggerina:kun koodirivi suoritetaan, suoritus pysähtyy ja Pry-sessio aukeaa koodirivin kohdalle. Voit jatkaa suoritusta komennolla exit
 
 -prystä poistutaan komennolla exit ja byebugista komennolla c
+
+-Jos käytössäsi on Pry komento byebug ei käyttäydy kaikissa tilanteissa hyvin, kannattaakin käyttää oikeastaan aina komentoa
+binding.pry
     
  ### [Heroku yhteydet](https://github.com/vsvala/ratewine/blob/master/Dokumentaatio/Heroku%20yhteydet.md)
