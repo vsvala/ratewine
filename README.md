@@ -138,3 +138,9 @@ binding.pry
 
 - sovelluksen testaamiseen on käytetty [Rspec:iä](http://rspec.info/),[lisää](https://github.com/rspec/rspec-rails)
 - Testit voidaan ajaa komentorivin komennolla rspec spec tai rspec spec/models # suoritettaa hakemiston model sisältävät testit ja rspec spec/models/user_spec.rb   # suorittaa user_spec.rb:n määrittelemät testi
+
+### Testauskattavuus
+ Rails-sovelluksen testikattavuutta mitataan simplecov-gemin avulla, ks. https://github.com/colszowka/simplecov
+ 
+ ### Koodin laatumetriikka
+ v SaaS-palveluna toimivan Codeclimaten https://codeclimate.com avulla voidaan generoida Rails-koodista erilaisia laatumetriikoita.
