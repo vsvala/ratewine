@@ -102,6 +102,7 @@
 
 - [Autentikonti](https://github.com/vsvala/ratewine/blob/master/Dokumentaatio/Autentikointi.md)
 
+
 ### Debuggaus
 - Rails on jo konfiguroinut sovelluksesi käyttöön [byebug-debuggerin](http://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-byebug-gem) ja railsin web-konsolin. 
 Jos lisäät koodiin komennon binding.pry voit käyttää Pry:tä debuggerina:kun koodirivi suoritetaan, suoritus pysähtyy ja Pry-sessio aukeaa koodirivin kohdalle. Voit jatkaa suoritusta komennolla exit
