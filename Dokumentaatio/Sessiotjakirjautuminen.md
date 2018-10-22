@@ -12,3 +12,5 @@ ajan.
 
 - Rails-sovelluksen koodissa HTTP-pyynnön tehneen käyttäjän (tai tarkemmin ottaen selaimen) sessioon pääsee käsiksi hashin 
 kaltaisesti toimivan olion session kautta.
+
+- Ideana on toteuttaa kirjautuminen siten, että kirjautumisen yhteydessä talletetaan sessioon kirjautuvaa käyttäjää vastaavan User-olion id. Uloskirjautuessa sessio nollataan.
