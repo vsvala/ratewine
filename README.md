@@ -161,3 +161,6 @@ binding.pry
 -Datamäärän ollessa suuri, ei pelkkä kyselyjen optimointi riitä, vaan on etsittävä muita keinoja kuten cachaus eli välimuistien käyttö.
 - Eventual consistencyllä elihieman löyhemmästä ajantasaisuusvaatimuksesta saatetaan pystyä tehostamaan sovelluksen suorituskykyä huomattavasti.Ajantasaisuus voi määritellä Railsissa laittamalla esim.fragmentticachelle expiroitumisaika
 - Paras tapa olisi ehkä synkronisten operaatioiden suorittaminen, viestijonot ja taustatyöt:  jolloin käyttäjälle tarjottaisiin aina niin ajantasainen data kuin mahdollista ja välimuistin päivitys voitaisiin sitten suorittaa omassa taustalla olevassa, aika ajoin heräävässä säikeessä/prosessissa.
+
+### chromen developer tool
+Ohjelmointityön apuna kannattaa aina pitää auki. Network välilehti näyttää selaimen lähettämät HTTP-pyynnöt ja palvelimen niihin lähettämät vastaukset. Avautuu painamallay htäaikaa Shift, Control ja i (tai F12)
