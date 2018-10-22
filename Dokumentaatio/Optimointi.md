@@ -1,6 +1,6 @@
 # Optimointi
 
-##indeksi tietokantaan
+## indeksi tietokantaan
 
 - Tilanteissa joissaa käyttäjäolio haetaan tietokannasta id:n sijasta käyttäjän nimen perusteella, ietokanta joutuu käymään 
 läpi koko users-taulun. Users-taulusta tapahtuvaa käyttäjätunnuksen perusteella tehtävää hakua voidaan nopeuttaa lisäämällä
@@ -16,7 +16,7 @@ taululle indeksi. Indeksi toimii hajautustaulun tavoin, eli tarjoaa "O(1)"-ajass
   
  - Huonona puolena indeksöinnissä on poiston, ja lisäyksen yhteydessä indeksöinnin muokkaamiseen kukuva lisäaika
  
- ##Laiska lataaminen, n+1-ongelma ja tietokantakyselyjen optimointi
+ ## Laiska lataaminen, n+1-ongelma ja tietokantakyselyjen optimointi
  
  - Optimoinnin avuksi kannattaa ladata Miniprofiler, jonka saa käyttöön lisäämällä gemfileen:gem 'rack-mini-profiler'
  
@@ -32,3 +32,5 @@ taululle indeksi. Indeksi toimii hajautustaulun tavoin, eli tarjoaa "O(1)"-ajass
    että viinin lisäksi niihin liittyvät viinitilat ja tyylit tulee hakea tietokannasta kerralla:(eager loading)
       - def index
       - @beers = Beer.includes(:brewery, :style).all
+      
+## Cachays eli palvelinpuolen välimuistitoiminnallisuudet
