@@ -54,4 +54,13 @@ komennolla expire_fragment(avain) joka laitetaan kontrollern kaikkiin kohtiin jo
 - Käytännössä belongs_to-yhteyteen liitetty touch: true saa aikaan sen, että yhteyden toisessa päässä olevan olion kenttä updated_at päivittyy.
 
 ## Eventual consistency
+- Eventual consistencyllä elihieman löyhemmästä ajantasaisuusvaatimuksesta saatetaan pystyä tehostamaan sovelluksen suorituskykyä huomattavasti.Ajantasaisuus voi määritellä Railsissa laittamalla esim.fragmentticachelle expiroitumisaika:
+  - <% cache 'fragment_name', expires_in:10.minutes do %>
+  
+- Toinen ja ehkä parempi tapa reittaussivun nopeuttamiselle olisi cachata Rails.cacheen kontrollerin tarvitsemat tiedot. 
+- Yhtenä negatiivisena puolena cachen ajoittain tapahtuvassa ekspiroimisessa, esim. jos noudattaisimme strategiaa ratings-  sivun suhteen, aiheutuu jollekin käyttäjälle aika ajoin paljon aikaavievä operaatio siinä vaiheessa kun data on generoitava uudelleen välimuistiin.
+
+## Asynkronisuus, viestijonot ja taustatyöt
+
+
 
