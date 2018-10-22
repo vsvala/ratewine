@@ -1,5 +1,11 @@
 # Heroku yhteydet
-siirto herokuun...
+- Sovellus käynnistetään suorittamalla komentoriviltä operaatio: git push heroku master
+- Migraatiot onnistuu komennolla: heroku run rails db:migrate, jatkossakin on aina muistettava suorittaa migraatiot deployatessamme sovellusta Herokuun.
+- Jos haluat seed.rb tiedostossa määritellyt oliot tietokantaan, voit antaa komennon: heroku run rails db:seed
+- Jatkossakin on siis aina muistettava suorittaa migraatiot deployatessamme sovellusta Herokuun.
+
+- Voimme myös avata Rails-konsolin Herokussa sijaitsevalle sovellukselle komennolla: heroku run console
+
 
 ## Ongelmia herokuun deployaamisessa
 
