@@ -1,4 +1,21 @@
 # Heroku yhteydet
+
+- Asennettuasi komentorivikäyttöliittymän mene sovelluksen juurihakemistoon, ja luo sovellusta varten heroku-instanssi komennolla: heroku create
+- Syötä pyydettäessä Heroku-tunnuksesi.
+-  Sovelluksen URLin alkuosan saa haluamaansa muotoon antamalla komennon muodossa heroku create urlin_alkuosa.
+- Railsissa sovellukset käyttävät oletusarvoisesti sqlite-tietokantaa, mutta Herokussa käytössä on PostgreSQL-tietokanta. otta saamme PostgreSQLn käyttöön, joudumme tekemään muutoksen Gemfileen.
+
+- Poista rivi: gem 'sqlite3' ja lisää johonkin kohtaa tiedostoa allaolevat ja sen suorita komentorivillä: bundle install
+
+  - group :development, :test do
+    - gem 'sqlite3'
+  - end
+
+  - group :production do
+    - gem 'pg'
+    - gem 'rails_12factor'
+  - end
+
 - Sovellus käynnistetään suorittamalla komentoriviltä operaatio: git push heroku master
 - Migraatiot onnistuu komennolla: heroku run rails db:migrate, jatkossakin on aina muistettava suorittaa migraatiot deployatessamme sovellusta Herokuun.
 - Jos haluat seed.rb tiedostossa määritellyt oliot tietokantaan, voit antaa komennon: heroku run rails db:seed
