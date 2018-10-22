@@ -30,7 +30,7 @@ taululle indeksi. Indeksi toimii hajautustaulun tavoin, eli tarjoaa "O(1)"-ajass
   
   - Ratkaisuna voimme ohjata ActiveRecordin metodien parametrien avulla kyselyistä generoituvaa SQL:ää. Esim. seuraavasti  voimme ohjeistaa, että viinin lisäksi niihin liittyvät viinitilat ja tyylit tulee hakea tietokannasta kerralla:(eager loading)
       - def index
-      - @beers = Beer.includes(:brewery, :style).all
+      - @wines = Wine.includes(:wineyard, :style).all
       
 ## Cachays eli palvelinpuolen välimuistitoiminnallisuudet
 
