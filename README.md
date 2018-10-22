@@ -143,6 +143,9 @@ binding.pry
     
  ### [Heroku yhteydet](https://github.com/vsvala/ratewine/blob/master/Dokumentaatio/Heroku%20yhteydet.md)
  
+### [Optimointi](https://github.com/vsvala/ratewine/blob/master/Dokumentaatio/Optimointi.md) 
+- Tietokantahakuja voi optimoida indeksöimällä tauluja. Lisäksi laiskasta lazy loadin (yksittäisten olioiden hakeminen kannasta vasta siihen viitetessa) johtuvasta n+1 ongelmalta  voidaan välttyä eager loadaamalla kaikki tarvittavat oliot tietokannasta yhdellä kertaa. 
+ 
 ### [Testit](https://github.com/vsvala/ratewine/blob/master/Dokumentaatio/Testit.md)
 
 - sovelluksen testaamiseen on käytetty [Rspec:iä](http://rspec.info/),[lisää](https://github.com/rspec/rspec-rails)
