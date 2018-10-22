@@ -42,15 +42,15 @@ end
 - De facto -tapa Rails-sovellusten selaintason testaamiseen on Capybaran https://github.com/jnicklas/capybara käyttö. Itse testit kirjoitetaan edelleen Rspecillä, capybara tarjoaa siis rspec-testien käyttöön selaimen simuloinnin.
 
 - Capybara on oletusarvoisesti määriteltynä projektissa. Lisätään Gemfileen (test-scopeen) apukirjasto launchy eli test-scopen pitäisi näyttää seuraavalta:
-group :test do
-  # Adds support for Capybara system testing and selenium driver
-  gem 'capybara', '>= 2.15'
-  gem 'selenium-webdriver'
-  # Easy installation and use of chromedriver to run system tests with Chrome
-  gem 'chromedriver-helper'
-  gem 'factory_bot_rails'
-  gem 'launchy'
-end
+  - group :test do
+  -  #Adds support for Capybara system testing and selenium driver
+  - gem 'capybara', '>= 2.15'
+  - gem 'selenium-webdriver'
+  - #Easy installation and use of chromedriver to run system tests with Chrome
+  - gem 'chromedriver-helper'
+  - gem 'factory_bot_rails'
+  - gem 'launchy'
+  - end
 - Selaintason testit on tapana sijoittaa hakemistoon spec/features.
 
 ## Testauskattavuus
