@@ -148,6 +148,7 @@ binding.pry
 - Lisäksi laiskasta lazy loadin (yksittäisten olioiden hakeminen kannasta vasta siihen viitetessa) johtuvasta n+1 ongelmalta  voidaan välttyä eager loadaamalla kaikki tarvittavat oliot tietokannasta yhdellä kertaa. 
 -Datamäärän ollessa suuri, ei pelkkä kyselyjen optimointi riitä, vaan on etsittävä muita keinoja kuten cachaus eli välimuistien käyttö.
 - Eventual consistencyllä elihieman löyhemmästä ajantasaisuusvaatimuksesta saatetaan pystyä tehostamaan sovelluksen suorituskykyä huomattavasti.Ajantasaisuus voi määritellä Railsissa laittamalla esim.fragmentticachelle expiroitumisaika
+- Paras tapa olisi ehkä synkronisten operaatioiden suorittaminen, viestijonot ja taustatyöt:  jolloin käyttäjälle tarjottaisiin aina niin ajantasainen data kuin mahdollista ja välimuistin päivitys voitaisiin sitten suorittaa omassa taustalla olevassa, aika ajoin heräävässä säikeessä/prosessissa.
  
 ### [Testit](https://github.com/vsvala/ratewine/blob/master/Dokumentaatio/Testit.md)
 
