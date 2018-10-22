@@ -6,13 +6,13 @@
 läpi koko users-taulun. Users-taulusta tapahtuvaa käyttäjätunnuksen perusteella tehtävää hakua voidaan nopeuttaa lisäämällä
 taululle indeksi. Indeksi toimii hajautustaulun tavoin, eli tarjoaa "O(1)"-ajassa toimivan pääsyn haettuun tietokannan riviin.
 
--Luodaan indeksiä varten migraatio: rails g migration AddUserIndexBasedOnUsername
+- Luodaan indeksiä varten migraatio: rails g migration AddUserIndexBasedOnUsername
 
   - class AddUserIndexBasedOnUsername < ActiveRecord::Migration[5.2]
   - def change
   - add_index :users, :username
 
-  -Suoritetaan migraatio komennolla rake db:migrate
+  - Suoritetaan migraatio komennolla rake db:migrate
   
  - Huonona puolena indeksöinnissä on poiston, ja lisäyksen yhteydessä indeksöinnin muokkaamiseen kukuva lisäaika
  
@@ -28,9 +28,30 @@ taululle indeksi. Indeksi toimii hajautustaulun tavoin, eli tarjoaa "O(1)"-ajass
   eli hakiessamme kannasta yhdellä kyselyllä listallisen olioita, jokainen listan olioista aiheuttaakin salakavalasti uuden
   tietokantahaun ja näin yhden haun sijaan tapahtuukin noin n+1 hakua.
   
-  -Ratkaisuna voimme ohjata ActiveRecordin metodien parametrien avulla kyselyistä generoituvaa SQL:ää. Esim. seuraavasti voimme ohjeistaa, 
-   että viinin lisäksi niihin liittyvät viinitilat ja tyylit tulee hakea tietokannasta kerralla:(eager loading)
+  - Ratkaisuna voimme ohjata ActiveRecordin metodien parametrien avulla kyselyistä generoituvaa SQL:ää. Esim. seuraavasti  voimme ohjeistaa, että viinin lisäksi niihin liittyvät viinitilat ja tyylit tulee hakea tietokannasta kerralla:(eager loading)
       - def index
       - @beers = Beer.includes(:brewery, :style).all
       
 ## Cachays eli palvelinpuolen välimuistitoiminnallisuudet
+
+- Datamäärän ollessa suuri, ei pelkkä kyselyjen optimointi riitä, vaan on etsittävä muita keieinoja kuten cachaus eli välimuistien käyttö.
+- Jos cache on päällä, on projektissa olemassa tiedosto tmp/caching-dev.txt. Jos tiedostoa ei ole, saat cachen päälle suorittamalla komentoriviltä komennon rails dev:cache. Komennon pitäisi tulostaa: "Development mode is now being cached."
+Jos komento tulostaa "Development mode is no longer being cached", suorita se uudelleen. Käynnistä nyt sovellus uudelleen.
+
+- Cachays tapahtuu sisällyttämällä näkymätemplaten cachattavan osa, eli sivufragmentti seuraavanlaiseen lohkoon:
+  - <% cache 'winelist', skip_digest: true do %>   ...   <% end %>  
+- Nyt sivulla käytyämme sivun osa tallettuu välimuistiin ja seuraava sivun avaaminen on huomattavasti nopeampi.
+
+- Ongelmia voi aihutua siinä että uusien viinien luominen tai poisto ei nyt näy sivulla..koska vanhat tiedot tulevat välimuistista.Syynä tälle on tietenkin se, että sivufragmentti löytyy edelleen välimuistista. Vanhentunut näkymäfragmentti tulisi siis ekspiroida. Tässä tapauksessa helpoin strategia on kontrollerista käsin tapahtuva manuaalinen ekspirointi.
+komennolla expire_fragment(avain) joka laitetaan kontrollern kaikkiin kohtiin joissa listan sisältö mahd. muuttuu:create, update ja destroy. 
+    - def create
+    - expire_fragment('beerlist')
+-Jos haluamme cachata yksittäisen oluen sivun, kannattaa fragmentin avaimeksi laittaa itse cachattava olio:
+   - <% cache @wine do %> ......  <% end %>
+-Ratkaisu on vielä sikäli puutteellinen, että jos olueeseen tehdään uusi reittaus, olio ei itsessään muutu ja fragmentti ei ekspiroidu. Ongelma on kuitenkin helppo korjata. Lisätään reittaukseen tieto, että reittauksen syntyessä, muuttuessa tai tuhoutuessa, on samalla 'kosketettava' reittaukseen liittyvää olutta:
+  - class Rating < ApplicationRecord
+  -  belongs_to :beer, touch: true
+- Käytännössä belongs_to-yhteyteen liitetty touch: true saa aikaan sen, että yhteyden toisessa päässä olevan olion kenttä updated_at päivittyy.
+
+## Eventual consistency
+
