@@ -1,5 +1,12 @@
 # Heroku yhteydet
 
+- Sovelluksen deployaaminen Herokuun onnistuu helpoiten jos sovelluksen hakemisto on oma git-repositorionsa.
+
+- luo Herokuun tunnus.
+- luo ssh-avain ja lisää se herokuun sivulla https://dashboard.heroku.com/account
+- ohje ssh-avaimen luomiseen https://github.com/mluukkai/otm-2018/blob/master/tehtavat/viikko1.md#julkinen-avain
+- Asenna komentoriviliittymän sisältävä Heroku Toolbelt sivun https://toolbelt.heroku.com/ ohjeiden mukaan.
+
 - Asennettuasi komentorivikäyttöliittymän mene sovelluksen juurihakemistoon, ja luo sovellusta varten heroku-instanssi komennolla: heroku create
 - Syötä pyydettäessä Heroku-tunnuksesi.
 -  Sovelluksen URLin alkuosan saa haluamaansa muotoon antamalla komennon muodossa heroku create urlin_alkuosa.
