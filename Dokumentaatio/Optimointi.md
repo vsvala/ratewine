@@ -34,6 +34,7 @@ taululle indeksi. Indeksi toimii hajautustaulun tavoin, eli tarjoaa "O(1)"-ajass
       
 ## Cachays eli palvelinpuolen välimuistitoiminnallisuudet
 
+
 - Datamäärän ollessa suuri, ei pelkkä kyselyjen optimointi riitä, vaan on etsittävä muita keieinoja kuten cachaus eli välimuistien käyttö.
 - Jos cache on päällä, on projektissa olemassa tiedosto tmp/caching-dev.txt. Jos tiedostoa ei ole, saat cachen päälle suorittamalla komentoriviltä komennon rails dev:cache. Komennon pitäisi tulostaa: "Development mode is now being cached."
 Jos komento tulostaa "Development mode is no longer being cached", suorita se uudelleen. Käynnistä nyt sovellus uudelleen.
@@ -61,6 +62,20 @@ komennolla expire_fragment(avain) joka laitetaan kontrollern kaikkiin kohtiin jo
 - Yhtenä negatiivisena puolena cachen ajoittain tapahtuvassa ekspiroimisessa, esim. jos noudattaisimme strategiaa ratings-  sivun suhteen, aiheutuu jollekin käyttäjälle aika ajoin paljon aikaavievä operaatio siinä vaiheessa kun data on generoitava uudelleen välimuistiin.
 
 ## Asynkronisuus, viestijonot ja taustatyöt
+- Parempaan ratkaisuun päästäisiinkin jos käyttäjälle tarjottaisiin aina niin ajantasainen data kuin mahdollista, eli kontrolleri olisi muotoa:
+def index
+  @top_beers = Rails.cache.read("beer top 3")
+  - Välimuistin päivitys voitaisiin sitten suorittaa omassa taustalla olevassa, aika ajoin heräävässä säikeessä/prosessissa:
+- taustaprosessointitapa on siinä mielessä yksinkertainen, että sovelluksen ja taustaprosessointia suorittavan säikeen/prosessin ei tarvitse synkronoida toimintojaan
+- Viestijonoilla ja erillisillä prosesseilla tai säikeillä hoidetun taustaprosessoinnin toteuttamiseen Railsissa on paljon erilaisia vaihtoehtoja, tämän hetken paras ratkaisu näistä on Sidekiq.
+Jos sovellus tarvitsee ainoastaan jonkin yksinkertaisen, tasaisin aikavälein suoritettavan taustaoperaation.
+- Sucker Punch- kirjasto asynkronisten opetaatioiden suorittamiseen
+Kuten edellä todettiin, paras vaihtoehto asynkronisten operaatioiden suorittamiseen Railsilla on Sidekiq
 
 
+## Palvelin/SUORITUSKYVYN SKAALAAMINEN 
+- horisontaali---palelimen fyysisen resurssinkasvatus
+- vertikaali –usean palvelimen käyttö/suoritus rinnakkain
+- Sovelluksen koostaminen erillisisitä mikropalveluista (esim beermappingapi)
 
+## NoSQL-tietokannat - tilanteeseen sopivan tietokantatyypin valinta
