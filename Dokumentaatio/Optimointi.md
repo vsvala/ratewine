@@ -2,7 +2,7 @@
 
 ## indeksi tietokantaan
 
-- Tilanteissa joissaa käyttäjäolio haetaan tietokannasta id:n sijasta käyttäjän nimen perusteella, ietokanta joutuu käymään 
+- Tilanteissa joissaa käyttäjäolio haetaan tietokannasta id:n sijasta käyttäjän nimen perusteella, tietokanta joutuu käymään 
 läpi koko users-taulun. Users-taulusta tapahtuvaa käyttäjätunnuksen perusteella tehtävää hakua voidaan nopeuttaa lisäämällä
 taululle indeksi. Indeksi toimii hajautustaulun tavoin, eli tarjoaa "O(1)"-ajassa toimivan pääsyn haettuun tietokannan riviin.
 
